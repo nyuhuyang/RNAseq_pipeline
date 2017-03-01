@@ -1,0 +1,58 @@
+#!/bin/bash -l
+#$ -N RNA-Analy1
+#$ -j y
+#$ -m a
+#$ -M yah2014@med.cornell.edu
+#$ -l h_vmem=8G
+#$ -pe smp 4
+#$ -q debug.q
+#$ -q *@@red
+
+
+
+
+#---------------------Variables to be se-------------------------#
+path=/athena/elementolab/scratch/xfer/zhunter #path to all the WM samples in zhunter folder
+STARREF=/home/yah2014/hg19_Genomedir
+PROECT_NAME=$(basename "path")
+F1=$(ls ${path} | head -6 | tail -1)
+F2=$(ls ${path} | head -7 | tail -1)
+Sample="ZH10_NWM07_CTTGTA_L005"
+echo "path=$path"
+echo "STARREF=$STARREF"
+echo "Sample=$Sample"
+echo "$F1"
+echo "$F2"
+
+#------------rsync before STAR Alignment Command---------------------------#
+
+cd $TMPDIR  #copy the samples foldeR
+mkdir input
+rsync -v -a -z --exclude 'Summary' $path/$F1 ${TMPDIR}/input/ #copy the RNA samples foldeR
+rsync -v -a -z --exclude 'Summary' $path/$F2 ${TMPDIR}/input/ #copy the RNA samples foldeR
+
+echo 'Processing' ${Sample}
+
+
+echo "Aligning and quantifying against Human-Hg19"
+
+#------------STAR Alignment Command--------------------------------#
+
+mkdir $TMPDIR/${Sample}_STAR
+cd $TMPDIR/${Sample}_STAR
+
+echo "Aligning FASTQ"
+/home/akv3001/STAR_2.4.0g1/bin/Linux_x86_64/STAR --genomeDir ${STARREF} --readFilesIn ${TMPDIR}/input/${F1} ${TMPDIR}/input/${F2} --outSAMstrandField intronMotif --outFileNamePrefix ${Sample}  --runThreadN 4 --readFilesCommand zcat
+
+
+#----------------Sorting SAM File by name-------------------
+
+/home/akv3001/Programs/samtools/samtools view -bS *Aligned.out.sam > ${Sample}_Aligned.out.bam
+/home/akv3001/Programs/samtools/samtools sort -n ${Sample}_Aligned.out.bam ${Sample}_name_sorted
+/home/akv3001/Programs/samtools/samtools sort ${Sample}_Aligned.out.bam ${Sample}_sorted
+
+#----------------Samtools index ------------------------------
+
+#samtools index  $TMPDIR/$Sample/${Sample}_tophat_out/accepted_hits.bam    
+/home/akv3001/Programs/samtools/samtools index $TMPDIR/${Sample}_STAR/${Sample}_sorted.bam
+rsync -r -v --exclude="*.sam" $TMPDIR/${Sample}_STAR /home/yah2014/All_Projects_RNASeq_Data/ALL_Aligned_BAMS/BAMS_${PROJECT_NAME}
