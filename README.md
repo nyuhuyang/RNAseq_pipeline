@@ -22,10 +22,9 @@ RNA-seq fastq files
 This pipeline is written for 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data.
 
 System requirements:
->40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
+  >40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
 Linux and Mac OS 64 bit system
 
 Software requirement:
-R 3.3.2
-python2.7 in server
-
+R 3.3.2<br />
+python2.7 in server<br />
