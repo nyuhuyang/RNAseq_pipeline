@@ -73,7 +73,12 @@ IV. Mpileup_Varscan_SnpEff.sh<br />
   snpEff_genes.txt<br />
   snpEff_summary.html<br />
   <br />
+
+---------
+
+---------
   <br />
+    
 V. Annotatedeffvcf-FREQ_summary.R
 <br />
 
