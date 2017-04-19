@@ -68,7 +68,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
   -o snpEff_genes.txt<br />
   -o snpEff_summary.html<br />
   <br />
-  merge multiple Annotated.eff.vcf files<br />
+  merge multiple Annotated.eff.vcf files with bcftools:<br />
   file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf<br />
   file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf<br />
   bgzip $file1<br />
