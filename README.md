@@ -23,7 +23,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
 <br />
 <br />
 II. Outline
-
+<br />
 Starting Materials:
   RNA-seq fastq files
 
@@ -38,6 +38,7 @@ System requirements:
 <br />
 <br />
 III. STAR-HTSeq.sh<br />
+<br />
   Starting Materials:<br />
   RNA-seq fastq files<br />
   
@@ -56,5 +57,28 @@ III. STAR-HTSeq.sh<br />
   The STAR-HTSeq.sh is project specific. The current script is for project zhunter only.
   The PROJECT_NAME can be changed to fit different projects.
   
- IV. Mpileup_Varscan_SnpEff.sh
- 
+IV. Mpileup_Varscan_SnpEff.sh<br />
+<br />
+
+  Starting Materials:<br />
+  Aligned, sort, and indexed Bam files<br />
+  
+  End Materials:<br />
+  mpileup file<br />
+  mutations.vcf<br />
+  dbsnp_annotated.vcf<br />
+  cosmic_dbsnp.vcf<br />
+  Annotated.eff.vcf<br />
+  snpEff_genes.txt<br />
+  snpEff_summary.html<br />
+  <br />
+  <br />
+V. Annotatedeffvcf-FREQ_summary.R
+<br />
+  Starting Materials:<br />
+  Annotated.eff.vcf<br />
+  
+  End Materials:<br />
+  boxplot<br />
+  hclust<br />
+  Heatmap<br />
