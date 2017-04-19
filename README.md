@@ -34,4 +34,4 @@ II. Outline
 
   Software requirement:
   R 3.3.2
-  python2.7 in server<
+  python2.7 in server
