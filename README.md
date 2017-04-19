@@ -6,7 +6,7 @@ Weill Cornell Medicine<br />
 Email: Hu.Yang@nyu.edu<br />
 ----------------------------------------------<br />
 
-0. Introduction
+I. Introduction
 
 RNA-Seq Analysis Pipeline has three sections:
 
@@ -21,17 +21,17 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
 
 
 
-1. Outline
+II. Outline
 
-Starting Materials:
-RNA-seq fastq files
+  Starting Materials:
+  RNA-seq fastq files
 
-This pipeline is written for 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data.
+  This pipeline is written for 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data.
 
-System requirements:
+  System requirements:
   >40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
-Linux and Mac OS 64 bit system
+  Linux and Mac OS 64 bit system
 
-Software requirement:
-R 3.3.2
-python2.7 in server<
+  Software requirement:
+  R 3.3.2
+  python2.7 in server<
