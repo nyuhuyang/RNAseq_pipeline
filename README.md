@@ -20,10 +20,8 @@ Lnux bash shell script including Mpileup, Varscan, and SnpEff.
 R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
 
 
-<br />
-<br />
 ## II. Outline
-<br />
+
 Starting Materials:
   RNA-seq fastq files
 
@@ -73,8 +71,7 @@ System requirements:
   snpEff_genes.txt<br />
   snpEff_summary.html<br />
   <br />
-  ##### merge multiple Annotated.eff.vcf files
-  ---------
+  merge multiple Annotated.eff.vcf files
   file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf
   file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf
   bgzip $file1
@@ -85,8 +82,8 @@ System requirements:
   tabix $file2
   bcftools merge -o {merged vcf name}.vcf $file1 $file2
   grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf
-  ---------
-  <br />
+
+<br />
     
 ## V. Annotatedeffvcf-FREQ_summary.R
 <br />
