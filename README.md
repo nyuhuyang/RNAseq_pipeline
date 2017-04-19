@@ -34,7 +34,7 @@ II. Outline
   R 3.3.2
   python2.7 in server
 
-III. STAR-HTSeq.sh
+III. STAR-HTSeq.sh<br />
   This bash shell is written for analyzing multiple projects.
   
   There are total 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data.
