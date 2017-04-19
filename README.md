@@ -8,7 +8,7 @@ Email: Hu.Yang@nyu.edu<br />
 
 I. Introduction
 
-RNA-Seq Analysis Pipeline has three sections:
+This RNA-Seq Analysis pipeline has three sections:
 
 1) STAR-HTSeq.sh<br />
 Linux bash shell script including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks.
@@ -57,6 +57,7 @@ III. STAR-HTSeq.sh<br />
   The STAR-HTSeq.sh is project specific. The current script is for project zhunter only.
   The PROJECT_NAME can be changed to fit different projects.
   
+  <br />
 IV. Mpileup_Varscan_SnpEff.sh<br />
 <br />
 
@@ -75,6 +76,7 @@ IV. Mpileup_Varscan_SnpEff.sh<br />
   <br />
 V. Annotatedeffvcf-FREQ_summary.R
 <br />
+
   Starting Materials:<br />
   Annotated.eff.vcf<br />
   
