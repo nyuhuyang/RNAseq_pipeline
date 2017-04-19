@@ -56,7 +56,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
   
 ## IV. Mpileup_Varscan_SnpEff.sh
 
-  Starting Materials:<br />
+  Input Materials:<br />
   -i Aligned, sort, and indexed Bam files<br />
   
   End Materials:<br />
@@ -83,7 +83,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
     
 ## V. Annotatedeffvcf-FREQ_summary.R
 
-  Starting Materials:<br />
+  Input Materials:<br />
   -i Annotated.eff.vcf<br />
   
   End Materials:<br />
