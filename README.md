@@ -1,11 +1,11 @@
 # RNA-Seq Analysis Pipeline
 
-RNA-Seq Analysis Pipeline: detecting mutations in RNA-Seq samples, exam genotype vs phenotype relationship
-###Author: Yang Hu
-###Department of Physiology and Biophysics
-###Weill Cornell Medicine
-###Email: Hu.Yang@nyu.edu
-###----------------------------------------------
+RNA-Seq Analysis Pipeline: detecting mutations in RNA-Seq samples, exam genotype vs phenotype relationship<br />
+Author: Yang Hu<br />
+Department of Physiology and Biophysics<br />
+Weill Cornell Medicine<br />
+Email: Hu.Yang@nyu.edu<br />
+
 RNA-seq-STAR-alignment-and-HTSeq-Count
 Script for STAR alignment and HTSeq Count. 
 Used on Linux server in Olivier Elemento lab, at Department of Physiology and Biophysics of Weill Cornell Medicine
