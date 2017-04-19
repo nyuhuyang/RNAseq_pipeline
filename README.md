@@ -1,7 +1,6 @@
 # RNA-Seq Analysis Pipeline
 
-###----------------------------------------------
-###RNA-Seq Analysis Pipeline: detecting mutations in RNA-Seq samples, exam genotype vs phenotype relationship
+RNA-Seq Analysis Pipeline: detecting mutations in RNA-Seq samples, exam genotype vs phenotype relationship
 ###Author: Yang Hu
 ###Department of Physiology and Biophysics
 ###Weill Cornell Medicine
