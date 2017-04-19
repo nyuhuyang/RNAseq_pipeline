@@ -33,9 +33,9 @@ System requirements:
   R 3.3.2<br />
   python2.7 in server
 
-<br />
-## III. STAR-HTSeq.sh<br />
-<br />
+
+## III. STAR-HTSeq.sh
+
   Starting Materials:<br />
   RNA-seq fastq files<br />
   
@@ -80,10 +80,8 @@ System requirements:
   bcftools merge -o {merged vcf name}.vcf $file1 $file2<br />
   grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf<br />
 
-<br />
     
 ## V. Annotatedeffvcf-FREQ_summary.R
-<br />
 
   Starting Materials:<br />
   Annotated.eff.vcf<br />
