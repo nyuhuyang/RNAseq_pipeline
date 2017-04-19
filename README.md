@@ -10,13 +10,13 @@ I. Introduction
 
 RNA-Seq Analysis Pipeline has three sections:
 
-1) STAR-HTSeq.sh
+1) STAR-HTSeq.sh<br />
 Linux bash shell script including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks
 
-2) Mpileup_Varscan_SnpEff.sh
+2) Mpileup_Varscan_SnpEff.sh<br />
 Lnux bash shell script including Mpileup, Varscan, and SnpEff
 
-3) Annotatedeffvcf-FREQ_summary.R
+3) Annotatedeffvcf-FREQ_summary.R<br />
 R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
 
 
