@@ -19,12 +19,13 @@ RNA-Seq Analysis Pipeline has three sections:
 Starting Materials:
 RNA-seq fastq files
 
-This pipeline is writen for 155 Waldenström Macroglobulinemia (more than 1 terabyte) RNA-seq data.
+This pipeline is written for 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data.
 
 System requirements:
->40 GB memory high-performance computing (HPC) environment, perfer Sun Grid Engine.
+>40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
 Linux and Mac OS 64 bit system
 
 Software requirement:
 R 3.3.2
 python2.7 in server
+
