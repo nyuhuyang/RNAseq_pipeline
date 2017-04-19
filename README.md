@@ -1,10 +1,10 @@
-----------------------------------------------
+----------------------------------------------<br />
 RNA-Seq Analysis Pipeline: detecting mutations in RNA-Seq samples, exam genotype vs phenotype relationship<br />
-Author: Yang Hu
-Department of Physiology and Biophysics
-Weill Cornell Medicine
-Email: Hu.Yang@nyu.edu
-----------------------------------------------
+Author: Yang Hu<br />
+Department of Physiology and Biophysics<br />
+Weill Cornell Medicine<br />
+Email: Hu.Yang@nyu.edu<br />
+----------------------------------------------<br />
 
 0. Introduction
 
