@@ -54,8 +54,8 @@ echo "Aligning and quantifying against Human-Hg19"
 
 
 #--------Formatting multiple lane Data for STAR-------------------#
-F1=$(ls $TMPDIR/input/$file/R1)
-F2=$(ls $TMPDIR/input/$file/R2)
+F1=$(ls $TMPDIR/input/$file/*R1*)
+F2=$(ls $TMPDIR/input/$file/*R2*)
 F1=$(echo $F1|tr ' ' ',')
 F2=$(echo $F2|tr ' ' ',')
 echo "F1= " ${F1}
