@@ -36,13 +36,13 @@ mkdir /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/yah2014/All
 cd $TMPDIR  #copy the samples foldeR
 mkdir input
 echo "Start to transfer FASTQ files."
-rsync -v -a -z --exclude 'Summary' $path/$file ./input #copy samples to foldeR
+rsync -v -a -z --exclude 'Summary' $path/$file ./input
 echo "total size"
 echo $(ls -l ${TMPDIR}/input/$file)
 echo "FASTQ files transfer Complished."
 echo " "
 echo "Start to transfer GTF file."
-rsync -v -a $gtf ./input		#copy gtf to foldeR
+rsync -v -a $gtf ./input
 echo $(ls -l ${TMPDIR}/input/$gtf_name)
 echo "GTF transfer done"
 echo " "
@@ -54,10 +54,10 @@ echo "Aligning and quantifying against Human-Hg19"
 
 
 #--------Formatting multiple lane Data for STAR-------------------#
-F1=$(ls $TMPDIR/input/$file/*R1*)
-F2=$(ls $TMPDIR/input/$file/*R2*)
-F1=$(echo $F1|tr ' ' ',') #Turn space into ,
-F2=$(echo $F2|tr ' ' ',') #Turn space into ,
+F1=$(ls $TMPDIR/input/$file/R1)
+F2=$(ls $TMPDIR/input/$file/R2)
+F1=$(echo $F1|tr ' ' ',')
+F2=$(echo $F2|tr ' ' ',')
 echo "F1= " ${F1}
 echo "F2= " ${F2}
 
