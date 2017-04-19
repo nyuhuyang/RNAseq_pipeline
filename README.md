@@ -6,7 +6,7 @@ Weill Cornell Medicine<br />
 Email: Hu.Yang@nyu.edu<br />
 ----------------------------------------------<br />
 
-I. Introduction
+## I. Introduction
 
 This RNA-Seq Analysis pipeline has three sections:
 
@@ -22,7 +22,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
 
 <br />
 <br />
-II. Outline
+## II. Outline
 <br />
 Starting Materials:
   RNA-seq fastq files
@@ -37,7 +37,7 @@ System requirements:
 <br />
 <br />
 <br />
-III. STAR-HTSeq.sh<br />
+## III. STAR-HTSeq.sh<br />
 <br />
   Starting Materials:<br />
   RNA-seq fastq files<br />
@@ -58,7 +58,7 @@ III. STAR-HTSeq.sh<br />
   The PROJECT_NAME can be changed to fit different projects.
   
   <br />
-IV. Mpileup_Varscan_SnpEff.sh<br />
+## IV. Mpileup_Varscan_SnpEff.sh<br />
 <br />
 
   Starting Materials:<br />
@@ -73,13 +73,22 @@ IV. Mpileup_Varscan_SnpEff.sh<br />
   snpEff_genes.txt<br />
   snpEff_summary.html<br />
   <br />
-
----------
-
----------
+  ##### merge multiple Annotated.eff.vcf files
+  ---------
+  file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf
+  file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf
+  bgzip $file1
+  bgzip $file1
+  file1=${file1}.gz
+  file2=${file2}.gz
+  tabix $file1
+  tabix $file2
+  bcftools merge -o {merged vcf name}.vcf $file1 $file2
+  grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf
+  ---------
   <br />
     
-V. Annotatedeffvcf-FREQ_summary.R
+## V. Annotatedeffvcf-FREQ_summary.R
 <br />
 
   Starting Materials:<br />
