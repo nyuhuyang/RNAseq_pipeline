@@ -20,7 +20,8 @@ Lnux bash shell script including Mpileup, Varscan, and SnpEff.
 R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
 
 
-
+<br />
+<br />
 II. Outline
 
   Starting Materials:
@@ -33,8 +34,18 @@ II. Outline
   Software requirement:
   R 3.3.2
   python2.7 in server
-
+<br />
+<br />
+<br />
 III. STAR-HTSeq.sh<br />
+  Starting Materials:
+  RNA-seq fastq files
+  
+  End Materials:
+  Aligned, sort, and indexed Bam files
+  HTSeq Counts
+  FPKM
+  
   This bash shell is written for analyzing multiple projects.
   
   There are total 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data.
@@ -45,4 +56,5 @@ III. STAR-HTSeq.sh<br />
   The STAR-HTSeq.sh is project specific. The current script is for project zhunter only.
   The PROJECT_NAME can be changed to fit different projects.
   
+ IV. Mpileup_Varscan_SnpEff.sh
  
