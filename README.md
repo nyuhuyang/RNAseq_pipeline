@@ -32,7 +32,7 @@ System requirements:
   Linux and Mac OS 64 bit system
 
   Software requirement:
-  R 3.3.2
+  R 3.3.2<br />
   python2.7 in server
 <br />
 <br />
