@@ -32,8 +32,7 @@ System requirements:
   Software requirement:
   R 3.3.2<br />
   python2.7 in server
-<br />
-<br />
+
 <br />
 ## III. STAR-HTSeq.sh<br />
 <br />
@@ -55,9 +54,7 @@ System requirements:
   The STAR-HTSeq.sh is project specific. The current script is for project zhunter only.
   The PROJECT_NAME can be changed to fit different projects.
   
-  <br />
-## IV. Mpileup_Varscan_SnpEff.sh<br />
-<br />
+## IV. Mpileup_Varscan_SnpEff.sh
 
   Starting Materials:<br />
   Aligned, sort, and indexed Bam files<br />
@@ -71,17 +68,17 @@ System requirements:
   snpEff_genes.txt<br />
   snpEff_summary.html<br />
   <br />
-  merge multiple Annotated.eff.vcf files
-  file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf
-  file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf
-  bgzip $file1
-  bgzip $file1
-  file1=${file1}.gz
-  file2=${file2}.gz
-  tabix $file1
-  tabix $file2
-  bcftools merge -o {merged vcf name}.vcf $file1 $file2
-  grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf
+  merge multiple Annotated.eff.vcf files<br />
+  file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf<br />
+  file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf<br />
+  bgzip $file1<br />
+  bgzip $file1<br />
+  file1=${file1}.gz<br />
+  file2=${file2}.gz<br />
+  tabix $file1<br />
+  tabix $file2<br />
+  bcftools merge -o {merged vcf name}.vcf $file1 $file2<br />
+  grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf<br />
 
 <br />
     
