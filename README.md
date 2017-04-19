@@ -14,5 +14,17 @@ RNA-Seq Analysis Pipeline has three sections:
 2) Mpileup_Varscan_SnpEff.sh        Linux bash shell script including Mpileup, Varscan, and SnpEff
 3) Annotatedeffvcf-FREQ_summary.R   R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
 
+1. Outline
+
 Starting Materials:
-155 Waldenström Macroglobulinemia RNA-seq fastq files (more than 1 terabyte)
+RNA-seq fastq files
+
+This pipeline is writen for 155 Waldenström Macroglobulinemia (more than 1 terabyte) RNA-seq data.
+
+System requirements:
+>40 GB memory high-performance computing (HPC) environment, perfer Sun Grid Engine.
+Linux and Mac OS 64 bit system
+
+Software requirement:
+R 3.3.2
+python2.7 in server
