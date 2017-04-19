@@ -37,14 +37,14 @@ System requirements:
 <br />
 <br />
 <br />
-III. STAR-HTSeq.sh 
-  Starting Materials: 
-  RNA-seq fastq files 
+III. STAR-HTSeq.sh<br />
+  Starting Materials:<br />
+  RNA-seq fastq files<br />
   
-  End Materials: 
-  Aligned, sort, and indexed Bam files 
-  HTSeq Counts 
-  FPKM 
+  End Materials:<br />
+  Aligned, sort, and indexed Bam files<br />
+  HTSeq Counts<br />
+  FPKM<br />
   
   This bash shell is written for analyzing multiple projects.
   
