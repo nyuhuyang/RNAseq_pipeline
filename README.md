@@ -6,7 +6,7 @@ Weill Cornell Medicine<br />
 Email: Hu.Yang@nyu.edu<br />
 ----------------------------------------------<br />
 
-###0. Introduction
+0. Introduction
 
 RNA-Seq Analysis Pipeline has three sections:
 
