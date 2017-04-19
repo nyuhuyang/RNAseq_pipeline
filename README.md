@@ -22,10 +22,10 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
 
 ## II. Outline
 
-Starting Materials:
-  RNA-seq fastq files
+  Input Materials:
+  -i RNA-seq fastq files
 
-System requirements:
+  System requirements:
   >40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
   Linux and Mac OS 64 bit system
 
@@ -36,13 +36,13 @@ System requirements:
 
 ## III. STAR-HTSeq.sh
 
-  Starting Materials:<br />
-  RNA-seq fastq files<br />
+  Input Materials:<br />
+  -i RNA-seq fastq files<br />
   
   End Materials:<br />
-  Aligned, sort, and indexed Bam files<br />
-  HTSeq Counts<br />
-  FPKM<br />
+  -o Aligned, sort, and indexed Bam files<br />
+  -o HTSeq Counts<br />
+  -o FPKM<br />
   
   This bash shell is written for analyzing multiple projects.
   
@@ -57,16 +57,16 @@ System requirements:
 ## IV. Mpileup_Varscan_SnpEff.sh
 
   Starting Materials:<br />
-  Aligned, sort, and indexed Bam files<br />
+  -i Aligned, sort, and indexed Bam files<br />
   
   End Materials:<br />
-  mpileup file<br />
-  mutations.vcf<br />
-  dbsnp_annotated.vcf<br />
-  cosmic_dbsnp.vcf<br />
-  Annotated.eff.vcf<br />
-  snpEff_genes.txt<br />
-  snpEff_summary.html<br />
+  -o mpileup file<br />
+  -o mutations.vcf<br />
+  -o dbsnp_annotated.vcf<br />
+  -o cosmic_dbsnp.vcf<br />
+  -o Annotated.eff.vcf<br />
+  -o snpEff_genes.txt<br />
+  -o snpEff_summary.html<br />
   <br />
   merge multiple Annotated.eff.vcf files<br />
   file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf<br />
@@ -84,9 +84,9 @@ System requirements:
 ## V. Annotatedeffvcf-FREQ_summary.R
 
   Starting Materials:<br />
-  Annotated.eff.vcf<br />
+  -i Annotated.eff.vcf<br />
   
   End Materials:<br />
-  boxplot<br />
-  hclust<br />
-  Heatmap<br />
+  -o boxplot<br />
+  -o hclust<br />
+  -o Heatmap<br />
