@@ -84,7 +84,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
 ## V. Annotatedeffvcf-FREQ_summary.R
 
   Input Materials:<br />
-  -i Annotated.eff.vcf<br />
+  -i {merged vcf name2}.vcf<br />
   
   End Materials:<br />
   -o boxplot<br />
