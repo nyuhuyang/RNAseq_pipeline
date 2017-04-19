@@ -25,26 +25,26 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
 II. Outline
 
 Starting Materials:
-RNA-seq fastq files
+  RNA-seq fastq files
 
 System requirements:
->40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
-Linux and Mac OS 64 bit system
+  >40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
+  Linux and Mac OS 64 bit system
 
-Software requirement:
-R 3.3.2
-python2.7 in server
+  Software requirement:
+  R 3.3.2
+  python2.7 in server
 <br />
 <br />
 <br />
-III. STAR-HTSeq.sh<br />
-Starting Materials:
-RNA-seq fastq files
+III. STAR-HTSeq.sh 
+  Starting Materials: 
+  RNA-seq fastq files 
   
-End Materials:
-Aligned, sort, and indexed Bam files
-HTSeq Counts
-FPKM
+  End Materials: 
+  Aligned, sort, and indexed Bam files 
+  HTSeq Counts 
+  FPKM 
   
   This bash shell is written for analyzing multiple projects.
   
