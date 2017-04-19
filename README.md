@@ -38,9 +38,9 @@ III. STAR-HTSeq.sh
   This bash shell is written for analyzing multiple projects.
   
   There are total 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data.
-  Those Waldenström Macroglobulinemia RNA-seq data are from two separate projects.
-  Project zhunter: 75 RNA-seq data from Harvard.
-  Project WTCHG: 80 RNA-seq data from France.
+  Those Waldenström Macroglobulinemia RNA-seq data are from two separate projects.<br />
+  Project zhunter: 75 RNA-seq data from Harvard.<br />
+  Project WTCHG: 80 RNA-seq data from France.<br />
   
   The STAR-HTSeq.sh is project specific. The current script is for project zhunter only.
   The PROJECT_NAME can be changed to fit different projects.
