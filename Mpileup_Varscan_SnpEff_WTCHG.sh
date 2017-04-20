@@ -62,7 +62,8 @@ echo $(ls -l)
 mkdir results
 echo ""
 echo "############# Samtools mpileup ##################"
-CMD="/home/yah2014/Programs/samtools-1.4/samtools mpileup -f $fa -l $WM_bed -b $List_bam -o $TMPDIR/results/${PROJECT_NAME}.mpileup" #save mpileup PROJECT_NAME
+CMD="/home/yah2014/Programs/samtools-1.4/samtools mpileup -f $fa -l $WM_bed -b $List_bam -o $TMPDIR/results/${PROJECT_NAME}.mpileup" 
+#save mpileup PROJECT_NAME
 eval $CMD
 
 echo $(ls -l $TMPDIR/results/${PROJECT_NAME}.mpileup)
@@ -79,13 +80,19 @@ echo ""
 echo "############# SnpEff annotation ##################"
 mkdir -p $TMPDIR/results/mutation_anno_verscan
 cd $TMPDIR/results/mutation_anno_verscan
-/home/akv3001/jdk1.8.0_05/bin/java -jar /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/snpEff/SnpSift.jar annotate /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/BED_GTF_References/dbsnp-V-146-All.vcf $TMPDIR/results/${PROJECT_NAME}_mutations.vcf  > $TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_dbsnp_annotated.vcf
+/home/akv3001/jdk1.8.0_05/bin/java -jar /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/snpEff/SnpSift.jar \
+annotate /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/BED_GTF_References/dbsnp-V-146-All.vcf \
+$TMPDIR/results/${PROJECT_NAME}_mutations.vcf  > $TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_dbsnp_annotated.vcf
 echo $(ls -l $TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_dbsnp_annotated.vcf)
 
-/home/akv3001/jdk1.8.0_05/bin/java -jar /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/snpEff/SnpSift.jar annotate /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/CosmicCodingMuts.vcf $TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_dbsnp_annotated.vcf > $TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_cosmic_dbsnp.vcf
+/home/akv3001/jdk1.8.0_05/bin/java -jar /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/snpEff/SnpSift.jar \
+annotate /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/CosmicCodingMuts.vcf \
+$TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_dbsnp_annotated.vcf > $TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_cosmic_dbsnp.vcf
 echo $(ls -l $TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_cosmic_dbsnp.vcf)
 
-/home/akv3001/jdk1.8.0_05/bin/java -Xmx4G -jar  /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/snpEff/snpEff.jar  -v  GRCh37.75 -c /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/snpEff/snpEff.config $TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_cosmic_dbsnp.vcf  >$TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_Annotated.eff.vcf
+/home/akv3001/jdk1.8.0_05/bin/java -Xmx4G -jar  /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/snpEff/snpEff.jar \
+-v  GRCh37.75 -c /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/snpEff/snpEff.config \
+$TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_cosmic_dbsnp.vcf  >$TMPDIR/results/mutation_anno_verscan/${PROJECT_NAME}_Annotated.eff.vcf
 echo $(ls -l $TMPDIR/results/mutation_anno_verscan/)
 
 mv snpEff_genes.txt ${PROJECT_NAME}_snpEff_genes.txt
