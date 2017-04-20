@@ -57,7 +57,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
 ## IV. Mpileup_Varscan_SnpEff.sh
 
   Input Materials:<br />
-  -i Aligned, sort, and indexed Bam files<br />
+  -i Aligned, sorted, and indexed Bam files<br />
   
   End Materials:<br />
   -o mpileup file<br />
