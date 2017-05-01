@@ -39,7 +39,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
   Input Materials:<br />
   -i RNA-seq fastq files<br />
   
-  End Materials:<br />
+  Output Materials:<br />
   -o Aligned, sort, and indexed Bam files<br />
   -o HTSeq Counts<br />
   -o FPKM<br />
@@ -59,7 +59,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
   Input Materials:<br />
   -i Aligned, sorted, and indexed Bam files<br />
   
-  End Materials:<br />
+  Output Materials:<br />
   -o mpileup file<br />
   -o mutations.vcf<br />
   -o dbsnp_annotated.vcf<br />
@@ -86,7 +86,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
   Input Materials:<br />
   -i {merged vcf name2}.vcf<br />
   
-  End Materials:<br />
+  Output Materials:<br />
   -o boxplot<br />
   -o hclust<br />
   -o Heatmap<br />
