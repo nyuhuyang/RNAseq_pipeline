@@ -19,8 +19,9 @@ It is part of a workflow for analyzing RNA-seq data from Waldenstrom Macroglobul
 
 In part A, script will add gene name, label "MISSENSE/NONSENSE" , extract FREQ%, add counts, and filter out SNP like below:
 
-|CHROM	|POS	|gene_POS	|gene	|ID	|REF	|ALT	|QUAL	|FILTER	|INFO	|counts	|ZH10_NWM07_CTTGTA             |...|
-|:-----:|:-----:|:---:|:---:|:--------:|:-----:|:-----:|:---:|:---:|:-----:|:---------:|:---:|:-----------------------------:|:-:|
+|#CHROM	| POS	 |gene_POS	|gene	| ID| REF	|ALT	|QUAL |FILTER |INFO      |counts	 |ZH10_NWM07_CTTGTA_L005_R1_001              |...|
+|:-----:|:------:|:--------:|:-----:|:-----:|:---:|:-----:|:---------:|:---:|:-----------------------------:|:-:|
+:-----:|:------:|
 |chr11	|47376915	|SPI1 47376915	|SPI1	|.	|G	|C	|.	|PASS	|MISSENSE	|9	|0|..|
 
 In part B, script will read FPKM results and cluster somatic mutations.
