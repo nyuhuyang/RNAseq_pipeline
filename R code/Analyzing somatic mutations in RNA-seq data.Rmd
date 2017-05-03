@@ -23,7 +23,7 @@ In part A, script will add gene name, label "MISSENSE/NONSENSE" , extract FREQ%,
 In part B, script will read FPKM results and cluster somatic mutations.
 
 ## A) Reading Annotated vcf, add gene names and annotations
-####A-1) Setup enviroment
+#### A-1) Setup enviroment
 ```{r messages=FALSE}
 setwd("/Users/yah2014/Dropbox/Public/Olivier/R/zhunter/Mutation");getwd();list.files() #set_up_enviroment
 SampleList_zhunter <- read.csv("SampleList_zhunter.txt", header=T)#Get_SampleList_zhunter_Data
@@ -36,7 +36,7 @@ Generate a new file `AnnotatedVcf_zhunter_new.csv`.
 AnnotatedVcf_zhunter_new <-AnnotatedVcf_zhunter[,1:2] 
 ```
 
-####A-2) Add gene names
+#### A-2) Add gene names
 ```{r}
 AnnotatedVcf_zhunter_new[,"gene_POS"]<-NA #add a empty column to a dataframe 
 colnames(AnnotatedVcf_zhunter_new)[1]<-"CHROM" # was #CHORM previously
@@ -102,7 +102,7 @@ AnnotatedVcf_zhunter<-AnnotatedVcf_zhunter[!is.na(AnnotatedVcf_zhunter_new[,"gen
 AnnotatedVcf_zhunter_new<-AnnotatedVcf_zhunter_new[!is.na(AnnotatedVcf_zhunter_new[,"gene"]),]
 rownames(AnnotatedVcf_zhunter_new)<-AnnotatedVcf_zhunter_new[,"gene_POS"]
 ```
-####A-3) Add MISSENSE & NONSSENSE annotations
+#### A-3) Add MISSENSE & NONSSENSE annotations
 ```{r}
 AnnotatedVcf_zhunter_new<-cbind(AnnotatedVcf_zhunter_new,AnnotatedVcf_zhunter[,3:7])
 
@@ -113,7 +113,7 @@ intersect <- intersect(grep("NONSENSE",AnnotatedVcf_zhunter[,"INFO"]),grep("MISS
 AnnotatedVcf_zhunter_new[intersect,"INFO"]<-"MISSENSE & NONSENSE" #Add both
 
 ```
-####A-4) Extract FREQ% data from column 10 to 84
+#### A-4) Extract FREQ% data from column 10 to 84
 
 ```{r}
 library(stringr)
@@ -128,7 +128,7 @@ for(i in 1:75){
     colnames(AnnotatedVcf_zhunter_new)[i+11] <-as.character(SampleList_zhunter_name[i,]) #rename columns
 }
 ```
-####A-5) Add counts
+#### A-5) Add counts
 `Counts` are the total occurrence in 75 samples for one specific mutation.
 ```{r}
 counting <-function(x){#input is [1,85] vector
@@ -163,7 +163,7 @@ write.csv(AnnotatedVcf_zhunter_COSM,"AnnotatedVcf_zhunter_COSM.csv")
 write.csv(AnnotatedVcf_zhunter_novel,"AnnotatedVcf_zhunter_novel.csv")
 ```
 ## B) Analyzing somatic mutations using FPKM
-####B-1) Setup enviroment and Get FPKM_zhunter Data
+#### B-1) Setup enviroment and Get FPKM_zhunter Data
 Read each `genes.FPKM_tracking` data into the file `FPKM_zhunter_temp.csv`.<br />
 Generate file `FPKM_zhunter` contains FPKM data from 1st sample only.
 
@@ -196,7 +196,7 @@ FPKM_name<-as.character(FPKM_zhunter_temp$tracking_id)
 FPKM_name<-cbind(FPKM_name,as.character(FPKM_zhunter_temp$tracking_id))
 ```
 
-####B-2) Charaterize somatic mutations
+#### B-2) Charaterize somatic mutations
 Setup envirment
 ```{r}
 setwd("/Users/yah2014/Dropbox/Public/Olivier/R/zhunter/Mutation");getwd();list.files()
