@@ -13,16 +13,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 It is part of a workflow for analyzing RNA-seq data from Waldenstrom Macroglobulinemia patients, in a cohort called "zhunter," from Harvard University. After Alignment, samtools sort, VarScan and Annotation, an annotated zhunter_Annotated.eff(data).vcf is generated like below:
 
-|#CHROM	| POS	 | ID	    | REF	|ALT	|QUAL |FILTER |INFO       |FORMAT|ZH10_NWM07_CTTGTA_L005_R1_001              |...|
+|#CHROM	| POS	 | ID	    | REF	|ALT	|QUAL |FILTER |INFO       |FORMAT|ZH10_NWM07_CTTGTA_L005_R1_001 |...|
 |:-----:|:------:|:--------:|:-----:|:-----:|:---:|:-----:|:---------:|:---:|:-----------------------------:|:-:|
-|chr11	|47376915|.|G	    |C      |.	  |PASS   |..EFF=missense_variant..|GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR|0/0:22:11:11:11:0:0%:1E0:39:0:7:4:0:0||...|
+|chr11	|47376915|.         |G	    |C      |.	  |PASS   |..EFF=missense_variant..|GT:GQ:SDP:DP:RD:AD:FREQ:PVAL:RBQ:ABQ:RDF:RDR:ADF:ADR|0/0:22:11:11:11:0:0%:1E0:39:0:7:4:0:0||...|
 
 In part A, script will add gene name, label "MISSENSE/NONSENSE" , extract FREQ%, add counts, and filter out SNP like below:
 
-|#CHROM	| POS	 |gene_POS	|gene	| ID| REF	|ALT	|QUAL |FILTER |INFO      |counts	 |ZH10_NWM07_CTTGTA_L005_R1_001              |...|
-|:-----:|:------:|:--------:|:-----:|:-----:|:---:|:-----:|:---------:|:---:|:-----------------------------:|:-:|
-:-----:|:------:|
-|chr11	|47376915	|SPI1 47376915	|SPI1	|.	|G	|C	|.	|PASS	|MISSENSE	|9	|0|..|
+|CHROM	| POS	 |gene_POS	    |gene	| ID| REF	|ALT	|QUAL |FILTER |INFO  |counts |ZH10_NWM07_CTTGTA_L005_R1_001   |...|
+|:-----:|:-----:|:-------------:|:-----:|:--:|:---:|:-----:|:------|:---:|:------:|:-----:|:------------------------------:|:--:|
+|chr11	|47376915|SPI1 47376915	|SPI1	|.	|G	    |C	    |.	    |PASS|MISSENSE|9	   |   0                            |..|
 
 In part B, script will read FPKM results and cluster somatic mutations.
 
