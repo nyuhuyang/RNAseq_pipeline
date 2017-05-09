@@ -82,7 +82,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
 
     
 ## V. Analyzing_somatic_mutations_in_RNA-seq_data.R
-  Demostration R markdown html: https://htmlpreview.github.io/?https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R%20Markdown%20HTML/Analyzing_somatic_mutations_in_RNA-seq_data.html<br />
+  R markdown html: https://htmlpreview.github.io/?https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R%20Markdown%20HTML/Analyzing_somatic_mutations_in_RNA-seq_data.html<br />
   Input Materials:<br />
   -i {merged vcf name2}.vcf<br />
   
@@ -92,7 +92,7 @@ R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/
   -o Heatmap<br />
 
 ## VI. rnaseq_gene_level.R
-  Demostration R markdown html: https://rawgit.com/nyuhuyang/RNA-Seq-Analysis/master/R%20Markdown%20HTML/rnaseq_gene_level.html<br />
+  R markdown html: https://rawgit.com/nyuhuyang/RNA-Seq-Analysis/master/R%20Markdown%20HTML/rnaseq_gene_level.html<br />
   Input Materials:<br />
   -i sample_table_zhunter.csv (table with samples annotation)<br />
   -i XX.bam.count (HTSeq-count files)<br />
