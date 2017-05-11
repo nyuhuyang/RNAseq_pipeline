@@ -66,7 +66,7 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   -o snpEff_summary.html<br />
   <br />
   
-### 2-1). Between section 2 and 3, run following script to multiple Annotated.eff.vcf files with bcftools:
+### 2-1). Between section 2 and 3, run following script:
   #merge multiple Annotated.eff.vcf files with bcftools:<br />
   file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf<br />
   file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf<br />
@@ -80,7 +80,7 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf<br /> #remove header
 
     
-## 3) Summarize FPKM, QC and cluster
+### 3) Summarize FPKM, QC and cluster
    Input Materials:<br />
   -i {merged vcf name2}.vcf<br />
   
@@ -89,7 +89,7 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   -o hclust<br />
   -o Heatmap<br />
 
-## 4). DESeq for gene level comparision
+### 4). DESeq for gene level comparision
    Input Materials:<br />
   -i sample_table_zhunter.csv (table with samples annotation)<br />
   -i XX.bam.count (HTSeq-count files)<br />
