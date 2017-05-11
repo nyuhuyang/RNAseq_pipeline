@@ -26,23 +26,12 @@ R code is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Anal
 R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/rnaseq_gene_level.Rmd
 
 
-## II. Outline
+## II. Work flow
 
 !![plot of chunk Flow_work](vignettes/Flow_work.png)
 
-  Input Materials:
-  -i RNA-seq fastq files
 
-  System requirements:
-  >40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
-  Linux and Mac OS 64 bit system
-
-  Software requirement:
-  R 3.3.2<br />
-  python2.7 in server
-
-
-## III. STAR-HTSeq.sh
+### 1). Alignment_and_Counts.sh
 
   Input Materials:<br />
   -i RNA-seq fastq files<br />
@@ -62,7 +51,7 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   The STAR-HTSeq.sh is project specific. The current script is for project zhunter only.
   The PROJECT_NAME can be changed to fit different projects.
   
-## IV. Mpileup_Varscan_SnpEff.sh
+###  2). CallVar_and_Annotation.sh
 
   Input Materials:<br />
   -i Aligned, sorted, and indexed Bam files<br />
@@ -76,7 +65,9 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   -o snpEff_genes.txt<br />
   -o snpEff_summary.html<br />
   <br />
-  merge multiple Annotated.eff.vcf files with bcftools:<br />
+  
+### 2-1). Between section 2 and 3, run following script to multiple Annotated.eff.vcf files with bcftools:
+  #merge multiple Annotated.eff.vcf files with bcftools:<br />
   file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf<br />
   file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf<br />
   bgzip $file1<br />
@@ -86,12 +77,11 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   tabix $file1<br />
   tabix $file2<br />
   bcftools merge -o {merged vcf name}.vcf $file1 $file2<br />
-  grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf<br />
+  grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf<br /> #remove header
 
     
-## V. Analyzing_somatic_mutations_in_RNA-seq_data.R
-  R markdown html: https://htmlpreview.github.io/?https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R%20Markdown%20HTML/Analyzing_somatic_mutations_in_RNA-seq_data.html<br />
-  Input Materials:<br />
+## 3) Summarize FPKM, QC and cluster
+   Input Materials:<br />
   -i {merged vcf name2}.vcf<br />
   
   Output Materials:<br />
@@ -99,12 +89,22 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   -o hclust<br />
   -o Heatmap<br />
 
-## VI. rnaseq_gene_level.R
-  R markdown html: https://rawgit.com/nyuhuyang/RNA-Seq-Analysis/master/R%20Markdown%20HTML/rnaseq_gene_level.html<br />
-  Input Materials:<br />
+## 4). DESeq for gene level comparision
+   Input Materials:<br />
   -i sample_table_zhunter.csv (table with samples annotation)<br />
   -i XX.bam.count (HTSeq-count files)<br />
   
   Output Materials:<br />
   -i gene expression analysis
   
+
+
+ ## III. Requirement
+  
+  System requirements:
+  >40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
+  Linux and Mac OS 64 bit system
+  
+  Software requirement:
+  R 3.3.2<br />
+  python2.7 in server
