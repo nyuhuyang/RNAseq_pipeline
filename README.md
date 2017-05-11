@@ -8,20 +8,20 @@ Email: Hu.Yang@nyu.edu<br />
 
 ## I. Introduction
 
-This RNA-Seq Analysis pipeline has three sections:
+This RNA-Seq Analysis pipeline has four sections:
 
 1) Alignment and Counts<br />
-Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. 
+Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. Most be performed in the high-performance computing enviroment.
 
 2) Call Somatic mutations and annotate vcf<br />
-Including Mpileup, Varscan, and SnpEff. 
+Including Mpileup, Varscan, and SnpEff. Preferably be performed in the high-performance computing enviroment.
 
 3) Summarize FPKM, QC and cluster<br />
-Including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
-
+Including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison. Can be performed on a local machine.
 
 4) DESeq for gene level comparision<br />
-DESeq and downstram analysis.
+DESeq and downstram analysis. Can be performed on a local machine.
+
 
 ## II. Work flow
 
