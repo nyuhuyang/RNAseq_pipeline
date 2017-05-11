@@ -38,7 +38,7 @@ DESeq and downstram analysis
   -o HTSeq Counts<br />
   -o FPKM<br />
   
-  Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh
+  Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh<br />
   This bash shell is written for analyzing multiple projects.
   
   There are total 75 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data from Harvard.<br />
@@ -82,7 +82,7 @@ DESeq and downstram analysis
   -o boxplot<br />
   -o hclust<br />
   -o Heatmap<br />
-  R code is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R
+  R code is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R<br />
   R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.Rmd
   
 ### 4). DESeq for gene level comparision
@@ -92,7 +92,7 @@ DESeq and downstram analysis
   
   Output Materials:<br />
   -i gene expression analysis
-  R code is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R
+  R code is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R<br />
   R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/rnaseq_gene_level.Rmd
 
  ## III. Requirement
