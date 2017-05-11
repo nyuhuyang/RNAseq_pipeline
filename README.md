@@ -11,7 +11,7 @@ Email: Hu.Yang@nyu.edu<br />
 This RNA-Seq Analysis pipeline has four sections:
 
 1) Alignment and Counts<br />
-Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. Most be performed in the high-performance computing enviroment.
+Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. Must be performed in the high-performance computing enviroment.
 
 2) Call Somatic mutations and annotate vcf<br />
 Including Mpileup, Varscan, and SnpEff. Preferably be performed in the high-performance computing enviroment.
