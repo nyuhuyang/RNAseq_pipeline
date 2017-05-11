@@ -19,6 +19,8 @@ Lnux bash shell script including Mpileup, Varscan, and SnpEff.
 3) Annotatedeffvcf-FREQ_summary.R<br />
 R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
 
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](https://ibb.co/ftUXi5)
 
 ## II. Outline
 
