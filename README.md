@@ -21,7 +21,7 @@ Including mutation data clean, FPKM data clean, QC, hclust, and mutation/express
 
 
 4) DESeq for gene level comparision<br />
-DESeq and downstram analysis
+DESeq and downstram analysis.
 
 ## II. Work flow
 
