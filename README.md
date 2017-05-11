@@ -31,12 +31,12 @@ DESeq and downstram analysis. Can be performed on a local machine.
 ### 1). Alignment_and_Counts.sh
 
   Input Materials:<br />
-  -i RNA-seq fastq files<br />
+  -i `RNA-seq fastq files`<br />
   
   Output Materials:<br />
-  -o Aligned, sort, and indexed Bam files<br />
-  -o HTSeq Counts<br />
-  -o FPKM<br />
+  -o `Aligned, sort, and indexed Bam files`<br />
+  -o `HTSeq Counts`<br />
+  -o `FPKM`<br />
   
   Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh<br />
   This bash shell is written for analyzing multiple projects.
