@@ -83,7 +83,7 @@ DESeq and downstram analysis.
   -o hclust<br />
   -o Heatmap<br />
   R code is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R<br />
-  R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.Rmd
+  R Markdown demostration is here: https://htmlpreview.github.io/?https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R%20Markdown%20HTML/Analyzing_somatic_mutations_in_RNA-seq_data.html
   
 ### 4). DESeq for gene level comparision
    Input Materials:<br />
@@ -93,7 +93,7 @@ DESeq and downstram analysis.
   Output Materials:<br />
   -i gene expression analysis
   R code is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R<br />
-  R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/rnaseq_gene_level.Rmd
+  R Markdown demostration is here: https://rawgit.com/nyuhuyang/RNA-Seq-Analysis/master/R%20Markdown%20HTML/rnaseq_gene_level.html
 
  ## III. Requirement
   
