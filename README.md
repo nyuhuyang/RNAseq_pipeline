@@ -11,20 +11,17 @@ Email: Hu.Yang@nyu.edu<br />
 This RNA-Seq Analysis pipeline has three sections:
 
 1) Alignment and Counts<br />
-Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh
+Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. 
 
 2) Call Somatic mutations and annotate vcf<br />
-Including Mpileup, Varscan, and SnpEff. Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/CallVar_and_Annotation.sh
+Including Mpileup, Varscan, and SnpEff. 
 
 3) Summarize FPKM, QC and cluster<br />
 Including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
-R code is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R
-R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.Rmd
+
 
 4) DESeq for gene level comparision<br />
-R code is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R
-R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/rnaseq_gene_level.Rmd
-
+DESeq and downstram analysis
 
 ## II. Work flow
 
@@ -41,14 +38,10 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   -o HTSeq Counts<br />
   -o FPKM<br />
   
+  Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh
   This bash shell is written for analyzing multiple projects.
   
-  There are total 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data.
-  Those Waldenström Macroglobulinemia RNA-seq data are from two separate projects.<br />
-  Project zhunter: 75 RNA-seq data from Harvard.<br />
-  Project WTCHG: 80 RNA-seq data from France.<br />
-  
-  The STAR-HTSeq.sh is project specific. The current script is for project zhunter only.
+  There are total 75 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data from Harvard.<br />
   The PROJECT_NAME can be changed to fit different projects.
   
 ###  2). CallVar_and_Annotation.sh
@@ -65,6 +58,7 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   -o snpEff_genes.txt<br />
   -o snpEff_summary.html<br />
   <br />
+  Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/CallVar_and_Annotation.sh
   
 ### 2-1). Between section 2 and 3, run following script:
   #merge multiple Annotated.eff.vcf files with bcftools:<br />
@@ -88,7 +82,9 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   -o boxplot<br />
   -o hclust<br />
   -o Heatmap<br />
-
+  R code is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R
+  R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.Rmd
+  
 ### 4). DESeq for gene level comparision
    Input Materials:<br />
   -i sample_table_zhunter.csv (table with samples annotation)<br />
@@ -96,8 +92,8 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
   
   Output Materials:<br />
   -i gene expression analysis
-  
-
+  R code is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R
+  R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/rnaseq_gene_level.Rmd
 
  ## III. Requirement
   
