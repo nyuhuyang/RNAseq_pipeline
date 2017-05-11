@@ -3,7 +3,7 @@ RNA-Seq Analysis Pipeline: detecting mutations in RNA-Seq samples, exam genotype
 Author: Yang Hu<br />
 Department of Physiology and Biophysics<br />
 Weill Cornell Medicine<br />
-Email: Hu.Yang@nyu.edu<br />
+Email: yah2014@med.cornell.edu;Hu.Yang@nyu.edu<br />
 ----------------------------------------------<br />
 
 ## I. Introduction
