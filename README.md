@@ -11,17 +11,24 @@ Email: Hu.Yang@nyu.edu<br />
 This RNA-Seq Analysis pipeline has three sections:
 
 1) Alignment and Counts<br />
-Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. Linux bash shell script is https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh
+Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh
 
 2) Call Somatic mutations and annotate vcf<br />
-Including Mpileup, Varscan, and SnpEff. Linux bash shell script is https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/CallVar_and_Annotation.sh
+Including Mpileup, Varscan, and SnpEff. Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/CallVar_and_Annotation.sh
 
-3) <br />
-R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
+3) Summarize FPKM, QC and cluster<br />
+Including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
+R code is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R
+R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.Rmd
 
-!(vignettes/Flow_work.png)
+4) DESeq for gene level comparision<br />
+R code is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R
+R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/rnaseq_gene_level.Rmd
+
 
 ## II. Outline
+
+!![plot of chunk Flow_work](vignettes/Flow_work.png)
 
   Input Materials:
   -i RNA-seq fastq files
