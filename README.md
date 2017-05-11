@@ -28,7 +28,7 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
 
 ## II. Work flow
 
-!![plot of chunk Flow_work](vignettes/Flow_work.png)
+![plot of chunk Flow_work](vignettes/Flow_work.png)
 
 
 ### 1). Alignment_and_Counts.sh
