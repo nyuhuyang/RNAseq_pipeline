@@ -10,16 +10,16 @@ Email: Hu.Yang@nyu.edu<br />
 
 This RNA-Seq Analysis pipeline has three sections:
 
-1) STAR-HTSeq.sh<br />
-Linux bash shell script including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks.
+1) Alignment and Counts<br />
+Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. Linux bash shell script is https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh
 
-2) Mpileup_Varscan_SnpEff_WTCHG.sh & Mpileup_Varscan_SnpEff_zhunter.sh<br />
-Lnux bash shell script including Mpileup, Varscan, and SnpEff.
+2) Call Somatic mutations and annotate vcf<br />
+Including Mpileup, Varscan, and SnpEff. Linux bash shell script is https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/CallVar_and_Annotation.sh
 
-3) Annotatedeffvcf-FREQ_summary.R<br />
+3) <br />
 R code including mutation data clean, FPKM data clean, QC, hclust, and mutation/expression comparison.
 
-![plot of chunk unnamed-chunk-2](vignettes/Flow_work.png)
+!(vignettes/Flow_work.png)
 
 ## II. Outline
 
