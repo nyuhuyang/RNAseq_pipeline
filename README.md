@@ -34,9 +34,9 @@ DESeq and downstram analysis. Can be performed on a local machine.
   -i `sample.fastq.gz`<br />
   
   Output Materials:<br />
-  -o from samtools `Sample_name_sorted.bam`,`Sample_sorted.bam`,`Sample_sorted.bam.bai`<br />
-  -o from HTSeq `sample.bam.count`<br />
-  -o from CuffLinks `genes.fpkm_tracking`,`genes.fpkm_tracking`, `genes.fpkm_tracking`, `genes.fpkm_tracking`<br />
+  -o samtools `Sample_name_sorted.bam`,`Sample_sorted.bam`,`Sample_sorted.bam.bai`<br />
+  -o HTSeq `sample.bam.count`<br />
+  -o CuffLinks `genes.fpkm_tracking`,`genes.fpkm_tracking`, `genes.fpkm_tracking`, `genes.fpkm_tracking`<br />
   
   Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh<br />
   This bash shell is written for analyzing multiple projects.
@@ -50,13 +50,9 @@ DESeq and downstram analysis. Can be performed on a local machine.
   -i `Sample_sorted.bam`,`Sample_sorted.bam.bai`<br />
   
   Output Materials:<br />
-  -o `${PROJECT_NAME}.mpileup`<br />
-  -o `${PROJECT_NAME}_mutations.vcf`<br />
-  -o `${PROJECT_NAME}_dbsnp_annotated.vcf`<br />
-  -o `${PROJECT_NAME}_cosmic_dbsnp.vcf`<br />
-  -o `${PROJECT_NAME}_Annotated.eff.vcf`<br />
-  -o `${PROJECT_NAME}_snpEff_genes.txt`<br />
-  -o `${PROJECT_NAME}_snpEff_summary.html`<br />
+  -o samtools mpileup `${PROJECT_NAME}.mpileup`<br />
+  -o VarScan `${PROJECT_NAME}_mutations.vcf`<br />
+  -o snpEff`${PROJECT_NAME}_dbsnp_annotated.vcf`,`${PROJECT_NAME}_cosmic_dbsnp.vcf`,`${PROJECT_NAME}_Annotated.eff.vcf`,`${PROJECT_NAME}_snpEff_genes.txt`,`${PROJECT_NAME}_snpEff_summary.html`<br />
   
   Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/CallVar_and_Annotation.sh
   
