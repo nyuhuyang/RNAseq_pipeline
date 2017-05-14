@@ -72,7 +72,7 @@ DESeq and downstram analysis. Can be performed on a local machine.
     
 ### 3) Summarize FPKM, QC and cluster
    Input Materials:<br />
-  -i {merged vcf name2}.vcf<br />
+  -i `{merged vcf name2}.vcf`<br />
   
   Output Materials:<br />
   -o boxplot<br />
