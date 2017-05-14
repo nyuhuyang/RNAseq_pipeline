@@ -56,7 +56,7 @@ DESeq and downstram analysis. Can be performed on a local machine.
   
   Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/CallVar_and_Annotation.sh
   
-### 2-1). Between section 2 and 3, run following script:
+### 2-1). To merge multiple Annotated.eff.vcf from two projects, run following script:
   #merge multiple Annotated.eff.vcf files with bcftools:<br />
   file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf<br />
   file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf<br />
