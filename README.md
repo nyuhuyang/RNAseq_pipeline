@@ -39,9 +39,9 @@ DESeq and downstram analysis. Can be performed on a local machine.
   -o CuffLinks `genes.fpkm_tracking`,`genes.fpkm_tracking`, `genes.fpkm_tracking`, `genes.fpkm_tracking`<br />
   
   Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh<br />
-  This bash shell is written for analyzing multiple projects.
+  This bash shell is written for analyzing multiple projects. One project will have multiple RNA-seq samples.
   
-  There are total 75 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data from Harvard.<br />
+  For example, there are total 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data from two projects("WTCHG" and "zhunter").<br />
   The PROJECT_NAME can be changed to fit different projects.
   
 ###  2). CallVar_and_Annotation.sh
