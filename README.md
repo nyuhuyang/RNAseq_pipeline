@@ -52,7 +52,7 @@ DESeq and downstram analysis. Can be performed on a local machine.
   Output Materials:<br />
   -o samtools mpileup `${PROJECT_NAME}.mpileup`<br />
   -o VarScan `${PROJECT_NAME}_mutations.vcf`<br />
-  -o snpEff`${PROJECT_NAME}_dbsnp_annotated.vcf`,`${PROJECT_NAME}_cosmic_dbsnp.vcf`,`${PROJECT_NAME}_Annotated.eff.vcf`,`${PROJECT_NAME}_snpEff_genes.txt`,`${PROJECT_NAME}_snpEff_summary.html`<br />
+  -o snpEff `${PROJECT_NAME}_Annotated.eff.vcf`<br />
   
   Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/CallVar_and_Annotation.sh
   
@@ -83,8 +83,8 @@ DESeq and downstram analysis. Can be performed on a local machine.
   
 ### 4). DESeq for gene level comparision
    Input Materials:<br />
-  -i sample_table_zhunter.csv (table with samples annotation)<br />
-  -i XX.bam.count (HTSeq-count files)<br />
+  -i `sample_table_${PROJECT_NAME}.csv` (table with samples annotation)<br />
+  -i `sample.bam.count` (HTSeq-count files)<br />
   
   Output Materials:<br />
   -i gene expression analysis
