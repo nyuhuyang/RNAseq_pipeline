@@ -31,11 +31,11 @@ DESeq and downstram analysis. Can be performed on a local machine.
 ### 1). Alignment_and_Counts.sh
 
   Input Materials:<br />
-  -i `sample.fastq.gz`<br />
+  -i `Sample.fastq.gz`<br />
   
   Output Materials:<br />
   -o samtools `Sample_name_sorted.bam`,`Sample_sorted.bam`,`Sample_sorted.bam.bai`<br />
-  -o HTSeq `sample.bam.count`<br />
+  -o HTSeq `Sample.bam.count`<br />
   -o CuffLinks `genes.fpkm_tracking`,`genes.fpkm_tracking`, `genes.fpkm_tracking`, `genes.fpkm_tracking`<br />
   
   Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh<br />
@@ -83,8 +83,8 @@ DESeq and downstram analysis. Can be performed on a local machine.
   
 ### 4). DESeq for gene level comparision
    Input Materials:<br />
-  -i `sample_table_${PROJECT_NAME}.csv` (table with samples annotation)<br />
-  -i `sample.bam.count` (HTSeq-count files)<br />
+  -i `Sample_table_${PROJECT_NAME}.csv` (table with samples annotation)<br />
+  -i `Sample.bam.count` (HTSeq-count files)<br />
   
   Output Materials:<br />
   -i gene expression analysis
