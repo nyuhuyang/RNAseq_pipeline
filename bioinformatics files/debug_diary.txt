@@ -455,3 +455,5 @@ R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/b
 If results is run without specifying contrast  or name , it will return the comparison of the last level of the last variable in the design formula over the first level of this variable. F
 res_cancer <- results(dds,contrast = c("Condition","Cancer","Healthy"))
 
+#! When Sample_name and Sample_ID are not highly replacable, Be very carefule when rename vcf file columns.
+    colnames(AnnotatedVcf_zhunter_new)[i+11] <-as.character(SampleList_zhunter_ID[i,]) #rename columns, here must be SampleList_zhunter_ID, not SampleList_zhunter_name.
