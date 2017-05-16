@@ -9,57 +9,59 @@
 #In this section, we will focus on comparing the expression levels of genes across different samples. 
 ## Counting reads in genes
 
-#In this section we will examine 75 samples from Waldenstrom Macroglobulinemia patients, 
-#in a cohort called ???zhunter,??? from Harvard University. 
-
-## Construct sample.table
+#In this section we will examine 80 samples from Waldenstrom Macroglobulinemia patients, 
+#in a cohort called WTCHG from France. 
 
 
-setwd("/Users/yah2014/Dropbox/Public/Olivier/R/zhunter/Mutation");getwd() #set_up_enviroment
+#detect OS and set enviroment
+if (Sys.info()[['sysname']]=="Darwin"){
+        setwd("/Users/yah2014/Dropbox/Public/Olivier/R/WTCHG/Mutation");getwd();list.files()}
+if (Sys.info()[['sysname']]=="Windows"){
+        setwd("C:/Users/User/Dropbox/Public/Olivier/R/WTCHG/Mutation");getwd();list.files()}
 
-sample_zhunter.table <- read.csv("sample_table_zhunter.csv")
-fileName <-paste0(sample_zhunter.table$BioSample, ".bam.count")
-sample_zhunter.table <- data.frame(sampleName = sample_zhunter.table$sampleName,
+# Construct sample.table
+sample_WTCHG.table <- read.csv("sample_table_WTCHG.csv")
+fileName <-paste0(sample_WTCHG.table$Sample_ID, ".bam.count")
+sample_WTCHG.table <- data.frame(sampleName = sample_WTCHG.table$Sample_name,
                                    fileName = fileName,
-                                   Condition= sample_zhunter.table$Condition,
-                                   QC = sample_zhunter.table$QC,
-                                   Label= sample_zhunter.table$Label,
-                                   BioSample = sample_zhunter.table$BioSample)
-head(sample_zhunter.table)
+                                   Condition= sample_WTCHG.table$Condition,
+                                   Population = sample_WTCHG.table$Population,
+                                   SPI1=sample_WTCHG.table$SPI1,
+                                   Sample_ID = sample_WTCHG.table$Sample_ID)
+head(sample_WTCHG.table)
 
 
 ## Creating a DESeqDataSet object
 
 library(DESeq2)
+#detect OS and asign dir for HTSeq Counts
+if (Sys.info()[['sysname']]=="Darwin"){
+        directory <- "/Users/yah2014/Dropbox/Public/Olivier/R/ALL_COUNTS/WTCHG_Counts"}
+if (Sys.info()[['sysname']]=="Windows"){
+        directory <- "C:/Users/User/Dropbox/Public/Olivier/R/ALL_COUNTS/WTCHG_Counts"}
 
-directory <- "/Users/yah2014/Dropbox/Public/Olivier/R/ALL_COUNTS/zhunter_Counts" #dir for HTSeq Counts
-ddsHTSeq <- DESeqDataSetFromHTSeqCount(sampleTable = sample_zhunter.table,
+ddsHTSeq <- DESeqDataSetFromHTSeqCount(sampleTable = sample_WTCHG.table,
                                        directory = directory,
                                        design= ~ Condition)
 ddsHTSeq
-
-
-#if Error in `colnames<-`(`*tmp*`, value = 1:75) : 
+#if Error in `colnames<-`(`*tmp*`, value = ....) : 
 #    attempt to set 'colnames' on an object with less than two dimensions
+#Way to solve:
 #clean the first row with the empty first column and "0" in the second column in HTSeq.count files
 #use terminal, run below command lines to remove first line for all files:
-#    cd /Users/yah2014/Dropbox/Public/Olivier/R/ALL_COUNTS/zhunter_Counts
+#    cd /Users/yah2014/Dropbox/Public/Olivier/R/ALL_COUNTS/WTCHG_Counts
 #for file in $(ls);do echo "$(tail -n +2 $file)" > $file;done
 
 ### Normalization for sequencing depth
 ####Pre-filtering
-
-#removing rows in which there are no reads or nearly no reads
-
-ddsHTSeq <- ddsHTSeq[ rowSums(counts(ddsHTSeq)) > 1, ]
+ddsHTSeq <- ddsHTSeq[ rowSums(counts(ddsHTSeq)) !=0, ] #removing rows with 0 reads
 
 
 #Note on factor levels
 
 
-ddsHTSeq$Condition <- factor(ddsHTSeq$Condition, levels=c("Cancer","Healthy","Unclear"))
-ddsHTSeq$Label <- factor(ddsHTSeq$Label, levels=c("NWM","rnaWT","WM","MWCL","BCWM"))
-
+ddsHTSeq$Condition <- factor(ddsHTSeq$Condition, levels=c("Healthy","Cancer"))
+ddsHTSeq$SPI1 <- factor(ddsHTSeq$SPI1, levels=c("um","m"))
 
 #The following estimates size factors to account for differences in sequencing depth, 
 #and is only necessary to make the `log.norm.counts` object below.
@@ -128,26 +130,30 @@ meanSdPlot(assay(vsd), ranks=FALSE)
         
 #Using the VST:
         
-plotPCA(vsd, intgroup="Condition")
+plotPCA(vsd, intgroup="SPI1")
 
-    
+
+ 
 #We can make this plot even nicer using custom code from the *ggplot2* library:
         
 library(ggplot2)
-head((data <- plotPCA(vsd, intgroup=c("Condition","Label"), returnData=TRUE)))
+head((data <- plotPCA(vsd, intgroup=c("Condition","SPI1"), returnData=TRUE)))
     (percentVar <- 100*round(attr(data, "percentVar"),2))
 
     
 makeLab <- function(x,pc) paste0("PC",pc,": ",x,"% variance")
-ggplot(data, aes(PC1,PC2,col=Condition,shape=Label)) + geom_point() +
-        xlab(makeLab(percentVar[1],1)) + ylab(makeLab(percentVar[2],2))
+g<-ggplot(data, aes(PC1,PC2,col=Condition,shape=SPI1))
+g+ geom_point(aes(size = SPI1)) + xlab(makeLab(percentVar[1],1))+ ylab(makeLab(percentVar[2],2))
++labs(title = "PCA for Health Condition and SPI1 mutation type")+
+        theme(plot.title = element_text(hjust = 0.5))
+
 
     
 #In addition, we can plot a hierarchical clustering based on Euclidean distance matrix:
         
 
-plot(hclust(dist(t(log.norm.counts))), labels=colData(dds)$Condition,cex = 0.75)
-plot(hclust(dist(t(assay(vsd)))), labels=colData(vsd)$Condition,cex = 0.75)
+plot(hclust(dist(t(log.norm.counts))), SPI1s=colData(dds)$Condition,cex = 0.75)
+plot(hclust(dist(t(assay(vsd)))), SPI1s=colData(vsd)$Condition,cex = 0.75)
 
 ## Differential gene expression
 ### Modeling raw counts with normalization
@@ -168,9 +174,6 @@ design(dds) <- ~Condition
 #such that log fold changes will be treated over control, and not control over treated.
         
         
-levels(dds$Condition)
-dds$Condition <- relevel(dds$Condition, "Unclear")
-dds$Condition <- relevel(dds$Condition, "Healthy")
 levels(dds$Condition)
 
         
@@ -195,27 +198,28 @@ summary(res)
 #For testing at a different threshold, we provide the `alpha` to *results*,
 #so that the mean filtering is optimal for our new FDR threshold.
         
-res2 <- results(dds, alpha=0.05)
+res2 <- results(dds, alpha=0.5,lfcThreshold=1)
 table(res2$padj < 0.05)
 
 #Exporting results to CSV files
         
 resO5rdered <- res2[order(res2$padj),]
-write.csv(as.data.frame(resO5rdered), 
-file="condition_treated_results.csv")
+resO5rdered <- resO5rdered[complete.cases(resO5rdered),] #remove NA
+resE8 <- resO5rdered[resO5rdered$padj<0.05,]
+write.csv(as.data.frame(resE8),file="condition_treated_results_Condition.csv")
 
 ### Visualizing results
         
 #The MA-plot provides a global view of the differential genes, 
 #with the log2 fold change on the y-axis over the mean of normalized counts:
             
-plotMA(res, ylim=c(-8,4))
+plotMA(res, ylim=c(-5,5))
 
 #We can also test against a different null hypothesis. 
 #For example, to test for genes which have fold change more than doubling or less than halving:
             
 res.thr <- results(dds, lfcThreshold=1)
-plotMA(res.thr, ylim=c(-8,4))
+plotMA(res.thr, ylim=c(-10,5))
 
         
         
@@ -234,37 +238,42 @@ head(resSort)
 
 #plotCounts(dds, gene=which.min(res$padj), intgroup="Condition")
 
+d <- plotCounts(dds, which(rownames(dds)=="SPI1"), intgroup="SPI1",returnData=TRUE)
+rownames(d[which(d$count<200),])
+
 #Make normalized counts plots for the top 9 genes:
-            
 par(mfrow=c(3,3))
-for (i in 1:9)  plotCounts(dds, order(res$padj)[i], intgroup="Condition")
+for (i in 1:9)  plotCounts(dds, order(res$padj)[i], intgroup="SPI1")
 
 #A more sophisticated plot of counts:
             
 library(ggplot2)
-data <- plotCounts(dds, gene=which.min(res$padj), intgroup=c("Condition","Label"), returnData=TRUE)
-ggplot(data, aes(x=Condition, y=count, col=Label)) +
-        geom_point(position=position_jitter(width=.1,height=0)) +
-        scale_y_log10()
+data <- plotCounts(dds, gene=which(rownames(res)=="SPI1"), intgroup=c("Condition","SPI1"), returnData=TRUE)
+ggplot(data, aes(x=Condition, y=count, col=SPI1))+
+    geom_point(aes(size=3),position=position_jitter(width=.1,height=0))+
+    labs(title = "Counts for SPI1 in different conditions")+
+    theme(plot.title = element_text(hjust = 0.5)) + 
+    scale_y_log10()
 
 #Connecting by lines shows the differences which are actually being tested by *results* given that our design includes `cell + Condition`
         
 par(mfrow=c(1,1))
-ggplot(data, aes(x=Condition, y=count, col=Label, group=Label)) +
+ggplot(data, aes(x=Condition, y=count, col=SPI1, group=SPI1)) +
        geom_point() + geom_line() + scale_y_log10() 
 
 #A heatmap of the top genes:
             
 library(pheatmap)
-topgenes <- head(rownames(resSort),20)
+topgenes <- head(rownames(resSort),100)
 mat <- assay(vsd)[topgenes,]
 mat <- mat - rowMeans(mat)
-df <- as.data.frame(colData(dds)[,c("Condition","Label")])
-pheatmap(mat, annotation_col=df, fontsize_col=6)
+df <- as.data.frame(colData(dds)[,c("Condition","SPI1")])
+pheatmap(mat, annotation_col=df, fontsize_col=5)
 
         
 ### Getting alternate annotations
         
+
 #We can then check the annotation of these highly significant genes:
             
 
@@ -304,15 +313,15 @@ svseq <- svaseq(dat, mod, mod0, n.sv=2)
 # Do the surrogate variables capture the cell difference?
         
 par(mfrow=c(1,1))
-plot(svseq$sv[,1], svseq$sv[,2], col=dds$Label,pch=16)
-legend("topright",pch = 16, col=1:5,levels(dds$Label))
-#text(svseq$sv[,1], svseq$sv[,2], 1:ncol(dds), pos=1)
+plot(svseq$sv[,1], svseq$sv[,2], col=dds$SPI1,pch=16,main="Surrograte Variable Analysis (SVA)")
+legend("topleft",pch = 16, col=1:5,levels(dds$SPI1))
+text(svseq$sv[,1], svseq$sv[,2], colnames(dds), pos=4)
 
 #Do the surrogate variables capture the health condition?
         
 plot(svseq$sv[,1], svseq$sv[,2], col=dds$Condition,pch=16)
-legend("topright",pch = 16, col=1:3,levels(dds$Condition))
-#text(svseq$sv[,1], svseq$sv[,2], 1:ncol(dds), pos=1)
+legend("topleft",pch = 16, col=1:3,levels(dds$Condition))
+text(svseq$sv[,1], svseq$sv[,2], 1:ncol(dds), pos=2)
 
         
 #Using the surrogate variables in a *DESeq2* analysis:
@@ -327,3 +336,4 @@ legend("topright",pch = 16, col=1:3,levels(dds$Condition))
 ## Session info
     
 sessionInfo()
+
