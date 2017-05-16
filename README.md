@@ -79,7 +79,7 @@ DESeq and downstram analysis. Can be performed on a local machine.
   -o hclust<br />
   -o Heatmap<br />
   R code is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R<br />
-  If you are a visual person and want to see the results, please click here: https://htmlpreview.github.io/?https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R%20Markdown%20HTML/Analyzing_somatic_mutations_in_RNA-seq_data.html
+    If you are a visual person and want to see the results, please click here: https://htmlpreview.github.io/?https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R%20Markdown%20HTML/Analyzing_somatic_mutations_in_RNA-seq_data.html
   
 ### 4). DESeq for gene level comparision
    Input Materials:<br />
