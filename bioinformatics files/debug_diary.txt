@@ -451,6 +451,7 @@ R code is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analy
 R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.Rmd
 
 #2017/05/16----------------------DESeq2 : three factor conditions--------------------------
-
-
+#Deseq: Multiple Conditions Testing
+If results is run without specifying contrast  or name , it will return the comparison of the last level of the last variable in the design formula over the first level of this variable. F
+res_cancer <- results(dds,contrast = c("Condition","Cancer","Healthy"))
 
