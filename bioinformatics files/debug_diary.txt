@@ -1,82 +1,8 @@
-#list of server
-aphrodite.med.cornell.edu
-aristotle
-pascal
-paris
-orleans
-descartes
-panda2.pbtech
-
-
-
-#---------------------------#path of reference files------------------------------------------------
-/home/akv3001/hg19_UCSC_ref.gtf         #akanksha's hg19 gtf
-/home/akv3001/Mus_UCSC_ref.gtf          #akanksha's mice gtf
-/zenodotus/elementolab/scratch/akv3001/Indexed_genome/hg19_Genomedir/      #akanksha's hg19 STARREF
-/zenodotus/elementolab/scratch/akv3001/Indexed_genome/hg19_genome_index.fa
-
-
-
-
-#---------------------------#rsync command line------------------------------------------------
-
-mac135103:Documents yah2014$ rsync -va aristotle.med.cornell.edu:/home/yah2014/success_scripts ./ #download script to Documents folder locally
-mac135103:Documents yah2014$ rsync -va ~/Documents/*bam ssh -l aristotle.med.cornell.edu:/home/yah2014/ #upload script to home folder in aphrodite server
-
-
-
-#---------------------------#path of storage folder------------------------------------------------
-
-#athena zhunter folder: aphrodite-- yes
-/athena/elementolab/scratch/xfer/zhunter/All_Projects_RNASeq_Data/
-ALL_MUTS/
-    WTCHG_MUTS/
-        results/
-    zhunter_MUTS/
-zhunter/
-#zenodotus folder1:
-/zenodotus/elementolab/scratch/yah2014/
-
-#zenodotus folder2:
-/zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/yah2014/All_Projects_RNASeq_Data/
-ALL_Aligned_BAMS/
-    BAMS_WTCHG/
-    BAMS_zhunter/
-ALL_COUNTS/
-    WTCHG_Counts/
-    zhunter_Counts/
-ALL_CUFFLINKS/
-    WTCHG_FPKM/
-    zhunter_FPKM/
-ALL_MUTS/
-    WTCHG_MUTS/
-        results/
-    zhunter_MUTS/
-        results/
-/zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/yah2014/All_Projects_RNASeq_Data/ALL_COUNTS/zhunter_Counts/
-
-#---------------------------#How to use tools no at default path------------------------------------------------
-/home/akv3001/STAR_2.4.0g1/bin/Linux_x86_64/STAR
-
-/home/yah2014/Programs/samtools-1.4/samtools
-/home/akv3001/Programs/samtools/samtools
-
-/home/yah2014/.local/bin/python2.7
-/home/yah2014/.local/bin/python2.7 /home/yah2014/.local/bin/htseq-count
-
-/home/akv3001/jdk1.8.0_05/bin/java
-/home/akv3001/jdk1.8.0_05/bin/java -Xmx4G -jar  /zenodotus/dat02/elemento_lab_scratch/oelab_scratch_scratch007/akv3001/mutation_tools/snpEff/snpEff.jar
-
-/home/akv3001/jdk1.8.0_05/bin/java -jar $HOME/Programs/VarScan.v2.3.9.jar
-
-
-
-
+# I assume nobody will see this.
+# Here is the diray recording someone like me from a little potato to a little bigger potato.
 
 
 #---------------------------#Install Python without root privilege------------------------------------------
-ssh aristotle
-
 mkdir -p /home/yah2014/.local/bin
 cd /home/yah2014/.local/bin
 wget --no-check-certificate https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz
@@ -197,14 +123,11 @@ export PATH=$PATH:/home/yah2014/Programs/rnaseqmut/bin:$PATH
 
 export PATH=$PATH:/home/akv3001/Programs/R-3.2.1/bin:$PATH
 
+#--------------------------decompress-----------------------------------
 #decompress bz2
 bzip2 -d
 #decompress tar
 tar -xvf
-
-
-/home/akv3001/Programs/samtools/samtools view -h ZH10_NWM07_CTTGTA_L005_R1_001_sorted.bam | head -10000 >ZH10_NWM07_CTTGTA_L005_R1_001_test.bam
-/home/akv3001/Programs/samtools/samtools calmd -b ZH10_NWM07_CTTGTA_L005_R1_001_test.bam /zenodotus/elementolab/scratch/akv3001/Indexed_genome/hg19_genome_index.fa > ZH10_NWM07_CTTGTA_L005_R1_001_test.bam.MD
 
 #---------------------------Install bcftools------------------------------------------
 #wget https://github.com/samtools/bcftools/releases/download/1.4/bcftools-1.4.tar.bz2  didn't work in Linux
@@ -216,6 +139,7 @@ cd bcftools-1.4
 make
 make prefix=$HOME install
 
+#--------------------------add MD tag for rnaseqmut---------------------
 # step 0.5, Data preparation,recalculate MD tag
 echo ""
 echo "####### Step 0.5, Data preparation,recalculate MD tag  ##########"
@@ -523,16 +447,10 @@ grep -v "##" Annotated_WTCHG_zhunter_20170419.vcf > Annotated_WTCHG_zhunter_sim_
 cd /Users/yah2014/Dropbox/Public/Olivier/R/ALL_COUNTS/zhunter_Counts
 for file in $(ls);do echo "$(tail -n +2 $file)" > $file;done
 
-
-
-
-
-
-
-
 R code is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R
 R Markdown demostration is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/vignettes/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.Rmd
 
+#2017/05/16----------------------DESeq2 : three factor conditions--------------------------
 
 
 
