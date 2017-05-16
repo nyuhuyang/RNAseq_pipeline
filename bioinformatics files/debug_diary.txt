@@ -1,5 +1,5 @@
 # I assume nobody will see this.
-# Here is the diray recording someone like me from a little potato to a little bigger potato.
+# Here is the diray recording the journey of someone like me, growing from a little potato to a little bigger potato.
 
 
 #---------------------------#Install Python without root privilege------------------------------------------
