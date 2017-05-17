@@ -25,13 +25,21 @@
 
 ## A) Reading Annotated vcf, add gene names and annotations
 #### A-1) Setup enviroment
-
-setwd("/Users/yah2014/Dropbox/Public/Olivier/R/zhunter/Mutation");getwd();list.files() #set_up_enviroment
-SampleList_zhunter <- read.csv("SampleList_zhunter.txt", header=T)#Get_SampleList_zhunter_Data
-SampleList_zhunter_name<- read.csv("SampleList_zhunter_name.txt", header=T)
-AnnotatedVcf_zhunter <- read.csv("zhunter_Annotated.eff20170416.vcf",sep="\t",header =T) #Get zhunter_Annotated.eff.vcf
-dim(AnnotatedVcf_zhunter)
-
+#detect OS and set enviroment
+if (Sys.info()[['sysname']]=="Darwin"){
+        setwd("/Users/yah2014/Dropbox/Public/Olivier/R/WTCHG/Mutation");getwd();list.files()}
+if (Sys.info()[['sysname']]=="Windows"){
+        setwd("C:/Users/User/Dropbox/Public/Olivier/R/WTCHG/Mutation");getwd();list.files()}
+#Double check SampleList_zhunter_ID in sample_table_WTCHG.csv, must be the same order as WTCHG_Annotated.eff.vcf
+sample_table_WTCHG<- read.csv("sample_table_WTCHG.csv",sep=",",header =T)
+WTCHG_Sample_name <- as.data.frame(sample_table_WTCHG$Sample_name)
+WTCHG_Sample_ID<- as.data.frame(sample_table_WTCHG$Sample_ID)
+AnnotatedVcf_WTCHG <- read.csv("WTCHG_Annotated.eff.vcf",sep="\t",header =T) #Get WTCHG_Annotated.eff.vcf
+dim(AnnotatedVcf_WTCHG)
+#rename AnnotatedVcf_WTCHG
+for (i in 1:nrow(WTCHG_Sample_name)){
+    names(AnnotatedVcf_WTCHG)[9+i]<- as.character(WTCHG_Sample_name[i,1])#renmae after column 9
+    }
 #Generate a new file `AnnotatedVcf_zhunter_new.csv`.
 AnnotatedVcf_zhunter_new <-AnnotatedVcf_zhunter[,1:2] 
 
@@ -123,7 +131,7 @@ for(i in 1:75){
     Sample[,"Sample1"]<-as.numeric(sub("%","",Sample[,"Sample1"])) #convert character of percentage into numeric
     Sample[,"Sample1"][is.na(Sample[,"Sample1"])]<- 0 #replace NA values with zeros
     AnnotatedVcf_zhunter_new <- cbind(AnnotatedVcf_zhunter_new, Sample[,"Sample1"]) 
-    colnames(AnnotatedVcf_zhunter_new)[i+11] <-as.character(SampleList_zhunter_name[i,]) #rename columns
+    colnames(AnnotatedVcf_zhunter_new)[i+11] <-as.character(SampleList_zhunter_ID[i,]) #rename columns
 }
 
 #### A-5) Add counts
@@ -153,13 +161,30 @@ AnnotatedVcf_zhunter_novel<- rbind(AnnotatedVcf_zhunter_COSM,AnnotatedVcf_zhunte
 AnnotatedVcf_zhunter_novel<- AnnotatedVcf_zhunter_novel[order(rownames(AnnotatedVcf_zhunter_novel)),]
 AnnotatedVcf_zhunter_novel<- AnnotatedVcf_zhunter_novel[unique(AnnotatedVcf_zhunter_novel[,"gene_POS"]),]
 
-####  A-6) Export csv files
+### A-7) Run t-test (mutation type vs Healthy/Cancer Condition) to find out biomarker
+sample_WTCHG.table <- read.csv("sample_table_WTCHG.csv")
+Conditions<-sample_WTCHG.table$Condition
+
+t_test <-data.frame()
+for(i in 1:nrow(AnnotatedVcf_WTCHG_new)){
+    t_test[i,1]<-rownames(AnnotatedVcf_WTCHG_new)[i]
+    mut<-as.double(AnnotatedVcf_WTCHG_new[i,12:(11+nrow(WTCHG_Sample_ID))])
+    t_test[i,2]<-t.test(mut ~ Conditions)[['p.value']]
+    tmp<-t.test(mut ~ Conditions)[['estimate']]
+    t_test[i,3]<-tmp[1]-tmp[2]
+    t_test[i,4]<-AnnotatedVcf_WTCHG_new[i,"counts"] 
+}
+t_test<-t_test[order(t_test[,2]),]
+colnames(t_test)<-c("Gene_POS","p.value","Cancer.mean - Healthy.mean","counts")
+rownames(t_test)<-1:nrow(AnnotatedVcf_WTCHG_new)    
+
+####  A-8) Export csv files
 
 
 write.csv(AnnotatedVcf_zhunter_new,"AnnotatedVcf_zhunter_new.csv")
 write.csv(AnnotatedVcf_zhunter_COSM,"AnnotatedVcf_zhunter_COSM.csv")
 write.csv(AnnotatedVcf_zhunter_novel,"AnnotatedVcf_zhunter_novel.csv")
-
+write.csv(t_test,"t_test.csv")
 
 ## B) Analyzing somatic mutations using FPKM
 #### B-1) Get FPKM_zhunter Data
