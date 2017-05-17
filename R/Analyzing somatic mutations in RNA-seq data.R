@@ -190,11 +190,16 @@ write.csv(t_test,"t_test.csv")
 #### B-1) Get FPKM_zhunter Data
 #       Read each `genes.FPKM_tracking` data into the file `FPKM_zhunter_temp.csv`.<br />
 #       Generate file `FPKM_zhunter` contains FPKM data from 1st sample only.
-
-
-SampleList_zhunter <- read.csv("/Users/yah2014/Dropbox/Public/Olivier/R/zhunter/Mutation/SampleList_zhunter.txt", header=T)#Get_SampleList_zhunter_Data
-FPKM_zhunter_files_path <-paste0("/Users/yah2014/Documents/Programs/R/FPKM/", #Create FPKM_zhunter_files_path file contains folder names
-                                 SampleList_zhunter$Sample_ID,"_CuffLinks/genes.FPKM_tracking") 
+#detect OS and set enviroment
+if (Sys.info()[['sysname']]=="Darwin"){
+        FPKM_WTCHG_files_path <-paste0("/Users/yah2014/Documents/Programs/R/FPKM/", 
+                                       WTCHG_Sample_ID[,1],"_CuffLinks/genes.FPKM_tracking")
+}
+if(Sys.info()[['sysname']]=="Windows"){
+        FPKM_WTCHG_files_path <-paste0("C:/Users/User/Documents/Programs/R/FPKM/", 
+                                       WTCHG_Sample_ID[,1],"_CuffLinks/genes.FPKM_tracking")
+}
+    
 FPKM_zhunter <-data.frame(x= str(0), y= integer(0)) #Generate empty FPKM_zhunter dataframe
 FPKM_zhunter_temp  <- read.csv(FPKM_zhunter_files_path[1], header=T, sep="\t") #Read data from 1st sample
 FPKM_zhunter_temp <- FPKM_zhunter_temp[order(FPKM_zhunter_temp$tracking_id),] #Reorder the gene name
@@ -216,25 +221,25 @@ dim(FPKM_zhunter)
 colnames(FPKM_zhunter) <-SampleList_zhunter_name$Sample_ID # or annotation$SimpleLabel
 rownames(FPKM_zhunter) <-FPKM_zhunter_temp$tracking_id
 
+ #set up cut off `FPKM_WTCHG`
+FPKM_WTCHG<-FPKM_WTCHG[rowSums(FPKM_WTCHG)>1,] #set cut off >1
 
 #### B-2) Charaterize somatic mutations
-#Setup envirment
-
-setwd("/Users/yah2014/Dropbox/Public/Olivier/R/zhunter/Mutation");getwd();list.files()
 
 
 #Run quanlity control with boxplot
 
 # set a margin
-par(oma=c(5,3,3,3))  # all sides have 3 lines of space  
-par(mar=c(2,3,2,2))
-FPKM_zhunter_clean <- FPKM_zhunter[,!(colnames(FPKM_zhunter) %in% c("ZH2_rnaWT2","ZH4_rnaWT4"))] #"ZH2_rnaWT2","ZH4_rnaWT4" have bad quanlity
-boxplot(log10(FPKM_zhunter_clean + 1),xlab="all test samples",cex=0.1, cex.lab=0.75,cex.axis=0.5, ylab = "log (base 10) RPKM + 1",main="Quanlity control for FPKM",las=2)
-
+par(oma=c(3,3,3,3))  # all sides have 3 lines of space  
+par(mar=c(2,2,2,2))
+boxplot(log10(FPKM_WTCHG + 1),xlab="all test samples",cex=0.05, cex.axis=0.5, ylab = "log (base 10) RPKM + 1",main="Quanlity control for FPKM",las=2)
+FPKM_WTCHG_clean <- FPKM_WTCHG[,!(colnames(FPKM_WTCHG) %in% c("ZH2_rnaWT2","ZH4_rnaWT4"))] #which sample to be excluded based on bad quanlity
+boxplot(log10(FPKM_WTCHG_clean + 1),xlab="all test samples",cex=0.05, cex.axis=0.5, ylab = "log (base 10) RPKM + 1",main="Quanlity control for FPKM",las=2)
 
 #Group sample with hclust
 
-par(mar=c(4,3,2,2))  
+par(oma=c(3,3,3,3))
+par(mar=c(2,2,2,2))
 lm <-log(FPKM_zhunter_clean+1)
 dm<-as.dist(1-cor(lm))
 hm<-hclust(dm,method = "average")
@@ -249,11 +254,14 @@ my_palette2 <- colorRampPalette(c("red", "green"))(n = 2)
 my_palette3 <- colorRampPalette(c("yellow", "orange", "red","green","blue","purple"))(n = 6)
 
 
+#rename
 
+mut_gene <- AnnotatedVcf_WTCHG_novel[,12:(nrow(WTCHG_Sample_name)+11)]
+for (i in 1:nrow(WTCHG_Sample_name)){
+    names(mut_gene)[i]<- as.character(WTCHG_Sample_name[i,1])#renmae after column 9
+}
 #Clean up data
-
-mut_gene <- AnnotatedVcf_zhunter_novel[,!(colnames(AnnotatedVcf_zhunter_novel) %in% c("CHROM","POS","gene_POS","gene","ID","REF","ALT","QUAL","FILTER","INFO","counts"))] 
-mut_gene_clean <- mut_gene[,!(colnames(mut_gene) %in% c("ZH2_rnaWT2","ZH4_rnaWT4"))]
+#mut_gene_clean <- mut_gene[,!(colnames(mut_gene) %in% c("ZH2_rnaWT2","ZH4_rnaWT4"))]
 
 
 
