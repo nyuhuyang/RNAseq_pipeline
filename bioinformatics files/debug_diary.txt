@@ -457,3 +457,4 @@ res_cancer <- results(dds,contrast = c("Condition","Cancer","Healthy"))
 
 #! When Sample_name and Sample_ID are not highly replacable, Be very carefule when rename vcf file columns.
     colnames(AnnotatedVcf_zhunter_new)[i+11] <-as.character(SampleList_zhunter_ID[i,]) #rename columns, here must be SampleList_zhunter_ID, not SampleList_zhunter_name.
+#Double check SampleList_zhunter_ID in sample_table_WTCHG.csv, must be the same order as WTCHG_Annotated.eff.vcf
