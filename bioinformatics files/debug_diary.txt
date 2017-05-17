@@ -467,4 +467,4 @@ t.test(mut ~ Conditions)$p.value
 2.
 t.test(mut ~ Conditions)$estimate[1]-t.test(mut ~ Conditions)$estimate[2]
 
-
+Remember, Always make bigger/publishable Lengend and font.
