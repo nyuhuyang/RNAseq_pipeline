@@ -225,10 +225,21 @@ dim(FPKM_WTCHG)
 colnames(FPKM_WTCHG) <-WTCHG_Sample_name[,1] # or annotation$SimpleLabel
 rownames(FPKM_WTCHG) <-FPKM_WTCHG_temp$tracking_id
 
+        
 #set up cut off `FPKM_WTCHG`
 FPKM_WTCHG<-FPKM_WTCHG[rowSums(FPKM_WTCHG)>1,] #set cut off >1
+dim(FPKM_WTCHG)
+        
+####  B-2) creat GCT file for GSEA
+#creat "na" description
+na_description<-data.frame(rep(NA,nrow(FPKM_WTCHG)))
+suppressWarnings(FPKM_WTCHG.gct<-cbind(rownames(FPKM_WTCHG),na_description,FPKM_WTCHG))#Duplicated rownames will be lost during cbind
+colnames(FPKM_WTCHG.gct)[1:2]<-c("NAME","Description")
+write.csv(FPKM_WTCHG.gct,"FPKM_WTCHG.csv") # open file with excel, delete first column, save as tab delimited text file
+####  B-3) creat cls file for GSEA
+#need use terminal to %s/,/ /g
 
-#### B-2) Charaterize somatic mutations
+#### B-4) Charaterize somatic mutations
 
 #Run quanlity control with boxplot
 par(oma=c(3,3,3,3))  # all sides have 3 lines of space
