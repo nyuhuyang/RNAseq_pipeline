@@ -459,7 +459,7 @@ res_cancer <- results(dds,contrast = c("Condition","Cancer","Healthy"))
     colnames(AnnotatedVcf_zhunter_new)[i+11] <-as.character(SampleList_zhunter_ID[i,]) #rename columns, here must be SampleList_zhunter_ID, not SampleList_zhunter_name.
 #Double check SampleList_zhunter_ID in sample_table_WTCHG.csv, must be the same order as WTCHG_Annotated.eff.vcf
 
-#2017/05/16---------------------t.test--------------
+#2017/05/17---------------------t.test--------------
 #What Biologist care most is raw data, then p-value and direction. Olivier said p-value doesn't mean anything if he can't see the trend from rawdata boxplot.
 1. is p value, 2 is direction.
 1.
@@ -468,3 +468,36 @@ t.test(mut ~ Conditions)$p.value
 t.test(mut ~ Conditions)$estimate[1]-t.test(mut ~ Conditions)$estimate[2]
 
 Remember, Always make bigger/publishable Lengend and font.
+
+#2017/05/18---------------------GSEA--------------
+#Gene Annotation and pathway
+#https://www.youtube.com/watch?v=vPRaUjiwwDQ
+#Gene annotation website
+#GeneCards (General information) www.genecards.org
+#Uniport (protein level) www.uniprot.org
+#Online Mendelian Inheritance in Man (gene history) www.omim.org
+#NCBI Gene (NCBI resource) www.ncbi.nlm.nih.gov/gene
+
+#Gene ontology
+
+#Pathway database
+#Kyoto Encyclopedia of Genes and Genomes www.genome.p/kegg/pathway.html
+#Pathway interaction database pid.nci.nih.gov
+#Reactome www.reactome.org , all on one
+
+#Protein-protein interaction database
+#ConsensusPathDB including compound
+
+#David
+#Gene_Ontology KEGG <---
+#Problem for Functional Annotation Clustering
+#1. Sampling issues
+#2. Cut off bias
+#3. Lost mild changes
+
+#Gene set analysis
+#https://www.youtube.com/watch?v=0qEqICa39U8
+#Self-contained GSA  3/20 > 20/30000
+#Competitive GSA -->GSEA
+
+#2017/05/17---------------------t.test--------------
