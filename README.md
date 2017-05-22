@@ -57,18 +57,22 @@ DESeq and downstram analysis. Can be performed on a local machine.
   Linux bash shell script is here:https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/CallVar_and_Annotation.sh
   
 ### 2-1). If want to merge two Annotated.eff.vcf from two projects, run following script:
-  #merge multiple Annotated.eff.vcf files with bcftools:<br />
-  file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf<br />
-  file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf<br />
-  bgzip $file1<br />
-  bgzip $file1<br />
-  file1=${file1}.gz<br />
-  file2=${file2}.gz<br />
-  tabix $file1<br />
-  tabix $file2<br />
-  bcftools merge -o {merged vcf name}.vcf $file1 $file2<br />
-  grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf<br /> #remove header
 
+
+<!-- -->
+
+    #merge multiple Annotated.eff.vcf files with bcftools:<br />
+    file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf<br />
+    file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf<br />
+    bgzip $file1<br />
+    bgzip $file1<br />
+    file1=${file1}.gz<br />
+    file2=${file2}.gz<br />
+    tabix $file1<br />
+    tabix $file2<br />
+    bcftools merge -o {merged vcf name}.vcf $file1 $file2
+    grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf<br /> #remove header   
+    
     
 ### 3) Summarize FPKM, QC and cluster
    Input Materials:<br />
