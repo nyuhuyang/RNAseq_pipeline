@@ -61,17 +61,17 @@ DESeq and downstram analysis. Can be performed on a local machine.
 
 <!-- -->
 
-    #merge multiple Annotated.eff.vcf files with bcftools:<br />
-    file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf<br />
-    file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf<br />
-    bgzip $file1<br />
-    bgzip $file1<br />
-    file1=${file1}.gz<br />
-    file2=${file2}.gz<br />
-    tabix $file1<br />
-    tabix $file2<br />
+    #merge multiple Annotated.eff.vcf files with bcftools:
+    file1=path to file1/${PROJECT_NAME}_Annotated.eff.vcf
+    file1=path to file2/${PROJECT_NAME}_Annotated.eff.vcf
+    bgzip $file1
+    bgzip $file1
+    file1=${file1}.gz
+    file2=${file2}.gz
+    tabix $file1
+    tabix $file2
     bcftools merge -o {merged vcf name}.vcf $file1 $file2
-    grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf<br /> #remove header   
+    grep -v "##" {merged vcf name}.vcf > {merged vcf name2}.vcf #remove header   
     
     
 ### 3) Summarize FPKM, QC and cluster
