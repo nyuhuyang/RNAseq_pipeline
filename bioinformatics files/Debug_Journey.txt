@@ -1,5 +1,5 @@
 # Nobody is supposed to read this, except me.
-# Here is the diary recording the journey of someone like me, growing from a little potato to a little bigger potato.
+# Here is the journey recording the way of someone like me, growing from a little potato into a little bigger potato.
 
 
 #---------------------------#Install Python without root privilege------------------------------------------
@@ -138,6 +138,11 @@ tar -xvf bcftools-1.4.tar
 cd bcftools-1.4
 make
 make prefix=$HOME install
+
+#---------------------------Install VarScan.v2.3.9.jar------------------------------------------
+
+wget --no-check-certificate https://sourceforge.net/projects/varscan/files/VarScan.v2.3.9.jar/download?use_mirror=superb-dca2&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fvarscan%2F&use_mirror=superb-dca2
+
 
 #--------------------------add MD tag for rnaseqmut---------------------
 # step 0.5, Data preparation,recalculate MD tag
@@ -501,3 +506,41 @@ Remember, Always make bigger/publishable Lengend and font.
 #Competitive GSA -->GSEA
 
 #2017/05/17---------------------t.test--------------
+# I havn't found good way to use plotCount without going through DESeq. Must have better way.
+demostrate t-test 
+library(DESeq2)
+library(ggplot2)
+Gene_maker<-c(t_test[1:8,"Gene_POS"],"SPI1 47376915",t_test[9:99,"Gene_POS"]) # pick top 8 gene and SPI1 47376915
+countData <- AnnotatedVcf_WTCHG_new[Gene_maker,12:(11+nrow(WTCHG_Sample_ID))]
+countData<-round(countData,digits=0)
+countData<-countData+1 #remove zero
+# Construct sample.table
+sample_WTCHG.table <- read.csv("sample_table_WTCHG.csv")
+fileName <-paste0(sample_WTCHG.table$Sample_ID, ".bam.count")
+sample_WTCHG.table <- data.frame(sampleName = sample_WTCHG.table$Sample_name,
+                                 fileName = fileName,
+                                 Condition= sample_WTCHG.table$Condition,
+                                 SPI1=sample_WTCHG.table$SPI1,
+                                 Sample_ID = sample_WTCHG.table$Sample_ID)
+
+ddsHTSeq <- DESeqDataSetFromMatrix(countData=countData,
+                              colData = sample_WTCHG.table,
+                               design= ~ Condition)
+
+dds <- DESeqDataSet(ddsHTSeq, design= ~ Condition)
+design(dds)
+design(dds) <- ~Condition+SPI1
+levels(dds$Condition)<-c("Healthy","Cancer")
+levels(dds$Condition)
+dds <- DESeq(dds)
+res_cancer <- results(dds,contrast = c("Condition","Cancer","Healthy"))
+
+par(mfrow=c(3,3))
+for (i in 1:8)  plotCounts(dds, order(res_cancer$padj)[i], intgroup="Condition",
+                           cex.main = 3,cex=1.5,cex.axis=1.5)
+plotCounts(dds, gene="SPI1 47376915", intgroup="Condition",cex.main = 3,cex=1.5,cex.axis=1.5)
+
+
+#2017/05/22--------------------Add today's data to folder name-------------
+today=`date '+%Y%m%d'`
+mkdir -p $TMPDIR/results/mutation_anno_verscan_$today
