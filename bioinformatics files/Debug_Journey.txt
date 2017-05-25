@@ -544,3 +544,8 @@ plotCounts(dds, gene="SPI1 47376915", intgroup="Condition",cex.main = 3,cex=1.5,
 #2017/05/22--------------------Add today's data to folder name-------------
 today=`date '+%Y%m%d'`
 mkdir -p $TMPDIR/results/mutation_anno_verscan_$today
+
+#2017/05/25-------------------GSEA-------------
+http://software.broadinstitute.org/gsea/doc/GSEAUserGuideFrame.html?Run_GSEA_Page
+Permutation type:Phenotype--This is the recommended method when there are at least seven (7) samples in each phenotype.
+Permutation type:Gene_set---This method is useful when you have too few samples to do phenotype permutations.
