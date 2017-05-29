@@ -98,7 +98,7 @@ DESeq and downstram analysis. Can be performed on a local machine.
  ## III. Requirement
   
   System requirements:
-  >40 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
+  >32 GB memory high-performance computing (HPC) environment, prefer Sun Grid Engine.
   Linux and Mac OS 64 bit system
   
   Software requirement:
