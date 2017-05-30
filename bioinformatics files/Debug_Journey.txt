@@ -549,3 +549,10 @@ mkdir -p $TMPDIR/results/mutation_anno_verscan_$today
 http://software.broadinstitute.org/gsea/doc/GSEAUserGuideFrame.html?Run_GSEA_Page
 Permutation type:Phenotype--This is the recommended method when there are at least seven (7) samples in each phenotype.
 Permutation type:Gene_set---This method is useful when you have too few samples to do phenotype permutations.
+
+#2017/05/19---------------------GSEA--------------
+source("http://bioconductor.org/biocLite.R")## try http:// if https:// URLs are not supported
+biocLite("BiocUpgrade")
+
+#201/05/30----samtools--pileup--------
+#didn't work if screen all variants. mpileup file become too large.
