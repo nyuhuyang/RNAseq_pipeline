@@ -95,6 +95,7 @@ DESeq and downstram analysis. Can be performed on a local machine.
   R code is here: https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/R/Analyzing%20somatic%20mutations%20in%20RNA-seq%20data.R<br />
   If you are a visual person and want to see the results, please click here: https://rawgit.com/nyuhuyang/RNA-Seq-Analysis/master/R%20Markdown%20HTML/rnaseq_gene_level.html
 
+  This is inspired by http://genomicsclass.github.io/book/pages/rnaseq_gene_level.html
  ## III. Requirement
   
   System requirements:
