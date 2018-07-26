@@ -10,7 +10,7 @@ Email: yah2014@med.cornell.edu;Hu.Yang@nyu.edu<br />
 
 This RNA-Seq Analysis pipeline has four sections:
 
-1) Alignment and Counts<br />
+1) <a href="https://github.com/nyuhuyang/RNA-Seq-Analysis/blob/master/Shell%20script/Alignment_and_Counts.sh">Alignment and Counts</a>
 Including STAR alignment, Samtools sort, HTSeq Count, and Cufflinks. Must be performed in the high-performance computing enviroment.
 
 2) Call Somatic mutations and annotate vcf<br />
