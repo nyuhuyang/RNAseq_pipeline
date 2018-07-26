@@ -38,7 +38,7 @@ DESeq and downstram analysis. Can be performed on a local machine.
   -o HTSeq `Sample.bam.count`<br />
   -o CuffLinks `genes.fpkm_tracking`,`genes.fpkm_tracking`, `genes.fpkm_tracking`, `genes.fpkm_tracking`<br />
   
-  Linux bash shell script is here:<a href="https://github.com/nyuhuyang/RNAseq_pipeline/blob/master/ShellScript/Alignment_and_Counts.sh">Alignment and Counts</a></li>
+  Linux bash shell script:<a href="https://github.com/nyuhuyang/RNAseq_pipeline/blob/master/ShellScript/Alignment_and_Counts.sh">Alignment and Counts</a></li>
   This bash shell is written for analyzing multiple projects. One project will have multiple RNA-seq samples.
   
   For example, there are total 155 Waldenström Macroglobulinemia (more than one terabyte) RNA-seq data from two projects("WTCHG" and "zhunter").<br />
@@ -54,7 +54,7 @@ DESeq and downstram analysis. Can be performed on a local machine.
   -o VarScan `${PROJECT_NAME}_mutations.vcf`<br />
   -o snpEff `${PROJECT_NAME}_Annotated.eff.vcf`<br />
   
-  Linux bash shell script is here:<a href="https://github.com/nyuhuyang/RNAseq_pipeline/blob/master/ShellScript/CallVar_and_Annotation.sh">Call Somatic mutations and annotate vcf</a></li>
+  Linux bash shell script:<a href="https://github.com/nyuhuyang/RNAseq_pipeline/blob/master/ShellScript/CallVar_and_Annotation.sh">Call Somatic mutations and annotate vcf</a></li>
   
 ### 2-1). If want to merge two Annotated.eff.vcf from two projects, run following script:
 
