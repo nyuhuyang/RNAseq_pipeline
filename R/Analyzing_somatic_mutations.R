@@ -339,3 +339,7 @@ Heatmap(mut_gene,
                 width = unit(1, "cm"),
                 heatmap_legend_param = list(title = "Population")
         )
+
+        
+        
+        
